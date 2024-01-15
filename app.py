@@ -6,15 +6,16 @@ from jbi100_app.views.heatmap import DensityHeatmap
 from dash import dcc, html
 import plotly.express as px
 from dash.dependencies import Input, Output
-
+from jbi100_app import data
 
 if __name__ == '__main__':
     # Create data
     df = px.data.iris()
     df2 = px.data.medals_wide(indexed=True)
+    df3 = data.get_data()
     # Instantiate custom views
     scatterplot1 = Scatterplot("Scatterplot 1", 'sepal_length', 'sepal_width', df)
-    heatmap1 = DensityHeatmap(name='Heatmap',feature_y="nation",feature_x= "medal",df= df2)
+    heatmap1 = DensityHeatmap(name='Heatmap',feature_y="nation",feature_x= "medal",df=df)
 
     app.layout = html.Div(
         id="app-container",

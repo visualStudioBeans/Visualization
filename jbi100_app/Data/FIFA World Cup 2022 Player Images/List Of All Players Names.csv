@@ -1,0 +1,831 @@
+,Name_Player
+0,Hernán Galíndez
+1,Félix Torres
+2,Piero Hincapié
+3,Robert Arboleda
+4,José Cifuentes
+5,William Pacho
+6,Pervis Estupiñán
+7,Carlos Gruezo
+8,Ayrton Preciado
+9,Romario Ibarra
+10,Michael Estrada
+11,Moisés Ramírez
+12,Enner Valencia (captain)
+13,Xavier Arreaga
+14,Ángel Mena
+15,Jeremy Sarmiento
+16,Ángelo Preciado
+17,Diego Palacios
+18,Gonzalo Plata
+19,Sebas Méndez
+20,Alan Franco
+21,Alexander Domínguez
+22,Moisés Caicedo
+23,Djorkaeff Reasco
+24,Jackson Porozo
+25,Kevin Rodríguez
+26,Remko Pasveer
+27,Jurriën Timber
+28,Matthijs de Ligt
+29,Virgil van Dijk (captain)
+30,Nathan Aké
+31,Stefan de Vrij
+32,Steven Bergwijn
+33,Cody Gakpo
+34,Luuk de Jong
+35,Memphis Depay
+36,Steven Berghuis
+37,Noa Lang
+38,Justin Bijlow
+39,Davy Klaassen
+40,Marten de Roon
+41,Tyrell Malacia
+42,Daley Blind
+43,Vincent Janssen
+44,Wout Weghorst
+45,Teun Koopmeiners
+46,Frenkie de Jong
+47,Denzel Dumfries
+48,Andries Noppert
+49,Kenneth Taylor
+50,Xavi Simons
+51,Jeremie Frimpong
+52,Saad Al-Sheeb
+53,Ró-Ró
+54,Abdelkarim Hassan
+55,Mohammed Waad
+56,Tarek Salman
+57,Abdulaziz Hatem
+58,Ahmed Alaaeldin
+59,Ali Assadalla
+60,Mohammed Muntari
+61,Hassan Al-Haydos (captain)
+62,Akram Afif
+63,Karim Boudiaf
+64,Musab Kheder
+65,Homam Ahmed
+66,Bassam Al-Rawi
+67,Boualem Khoukhi
+68,Ismaeel Mohammad
+69,Khalid Muneer
+70,Almoez Ali
+71,Salem Al-Hajri
+72,Yousef Hassan
+73,Meshaal Barsham
+74,Assim Madibo
+75,Naif Al-Hadhrami
+76,Jassem Gaber
+77,Mostafa Meshaal
+78,Seny Dieng
+79,Formose Mendy
+80,Kalidou Koulibaly (captain)
+81,Pape Abou Cissé
+82,Idrissa Gueye
+83,Nampalys Mendy
+84,Nicolas Jackson
+85,Cheikhou Kouyaté
+86,Boulaye Dia
+87,Moussa N'Diaye
+88,Pathé Ciss
+89,Fodé Ballo-Touré
+90,Iliman Ndiaye
+91,Ismail Jakobs
+92,Krépin Diatta
+93,Édouard Mendy
+94,Pape Matar Sarr
+95,Ismaïla Sarr
+96,Famara Diédhiou
+97,Bamba Dieng
+98,Youssouf Sabaly
+99,Abdou Diallo
+100,Alfred Gomis
+101,Moustapha Name
+102,Mamadou Loum
+103,Pape Gueye
+104,Jordan Pickford
+105,Kyle Walker
+106,Luke Shaw
+107,Declan Rice
+108,John Stones
+109,Harry Maguire
+110,Jack Grealish
+111,Jordan Henderson
+112,Harry Kane (captain)
+113,Raheem Sterling
+114,Marcus Rashford
+115,Kieran Trippier
+116,Nick Pope
+117,Kalvin Phillips
+118,Eric Dier
+119,Conor Coady
+120,Bukayo Saka
+121,Trent Alexander-Arnold
+122,Mason Mount
+123,Phil Foden
+124,Ben White
+125,Jude Bellingham
+126,Aaron Ramsdale
+127,Callum Wilson
+128,James Maddison
+129,Conor Gallagher
+130,Alireza Beiranvand
+131,Sadegh Moharrami
+132,Ehsan Hajsafi (captain)
+133,Shojae Khalilzadeh
+134,Milad Mohammadi
+135,Saeid Ezatolahi
+136,Alireza Jahanbakhsh
+137,Morteza Pouraliganji
+138,Mehdi Taremi
+139,Karim Ansarifard
+140,Vahid Amiri
+141,Payam Niazmand
+142,Hossein Kanaanizadegan
+143,Saman Ghoddos
+144,Rouzbeh Cheshmi
+145,Mehdi Torabi
+146,Ali Gholizadeh
+147,Ali Karimi
+148,Majid Hosseini
+149,Sardar Azmoun
+150,Ahmad Nourollahi
+151,Amir Abedzadeh
+152,Ramin Rezaeian
+153,Hossein Hosseini
+154,Abolfazl Jalali
+155,Matt Turner
+156,Sergiño Dest
+157,Walker Zimmerman
+158,Tyler Adams
+159,Antonee Robinson
+160,Yunus Musah
+161,Giovanni Reyna
+162,Weston McKennie
+163,Jesús Ferreira
+164,Christian Pulisic
+165,Brenden Aaronson
+166,Ethan Horvath
+167,Tim Ream
+168,Luca de la Torre
+169,Aaron Long
+170,Jordan Morris
+171,Cristian Roldan
+172,Shaq Moore
+173,Haji Wright
+174,Cameron Carter-Vickers
+175,Timothy Weah
+176,DeAndre Yedlin
+177,Kellyn Acosta
+178,Josh Sargent
+179,Sean Johnson
+180,Joe Scally
+181,Wayne Hennessey
+182,Chris Gunter
+183,Neco Williams
+184,Ben Davies
+185,Chris Mepham
+186,Joe Rodon
+187,Joe Allen
+188,Harry Wilson
+189,Brennan Johnson
+190,Aaron Ramsey
+191,Gareth Bale (captain)
+192,Danny Ward
+193,Kieffer Moore
+194,Connor Roberts
+195,Ethan Ampadu
+196,Joe Morrell
+197,Tom Lockyer
+198,Jonny Williams
+199,Mark Harris
+200,Daniel James
+201,Adam Davies
+202,Sorba Thomas
+203,Dylan Levitt
+204,Ben Cabango
+205,Rubin Colwill
+206,Matthew Smith
+207,Franco Armani
+208,Juan Foyth
+209,Nicolás Tagliafico
+210,Gonzalo Montiel
+211,Leandro Paredes
+212,Germán Pezzella
+213,Rodrigo De Paul
+214,Marcos Acuña
+215,Julián Álvarez
+216,Lionel Messi (captain)
+217,Ángel Di María
+218,Gerónimo Rulli
+219,Cristian Romero
+220,Exequiel Palacios
+221,Ángel Correa
+222,Thiago Almada
+223,Papu Gómez
+224,Guido Rodríguez
+225,Nicolás Otamendi
+226,Alexis Mac Allister
+227,Paulo Dybala
+228,Lautaro Martínez
+229,Emiliano Martínez
+230,Enzo Fernández
+231,Lisandro Martínez
+232,Nahuel Molina
+233,Alfredo Talavera
+234,Néstor Araujo
+235,César Montes
+236,Edson Álvarez
+237,Johan Vásquez
+238,Gerardo Arteaga
+239,Luis Romo
+240,Carlos Rodríguez
+241,Raúl Jiménez
+242,Alexis Vega
+243,Rogelio Funes Mori
+244,Rodolfo Cota
+245,Guillermo Ochoa
+246,Érick Gutiérrez
+247,Héctor Moreno
+248,Héctor Herrera
+249,Orbelín Pineda
+250,Andrés Guardado (captain)
+251,Jorge Sánchez
+252,Henry Martín
+253,Uriel Antuna
+254,Hirving Lozano
+255,Jesús Gallardo
+256,Luis Chávez
+257,Roberto Alvarado
+258,Kevin Álvarez
+259,Wojciech Szczęsny
+260,Matty Cash
+261,Artur Jędrzejczyk
+262,Mateusz Wieteska
+263,Jan Bednarek
+264,Krystian Bielik
+265,Arkadiusz Milik
+266,Damian Szymański
+267,Robert Lewandowski (captain)
+268,Grzegorz Krychowiak
+269,Kamil Grosicki
+270,Łukasz Skorupski
+271,Jakub Kamiński
+272,Jakub Kiwior
+273,Kamil Glik
+274,Karol Świderski
+275,Szymon Żurkowski
+276,Bartosz Bereszyński
+277,Sebastian Szymański
+278,Piotr Zieliński
+279,Nicola Zalewski
+280,Kamil Grabara
+281,Krzysztof Piątek
+282,Przemysław Frankowski
+283,Robert Gumny
+284,Michał Skóraś
+285,Mohammed Al-Rubaie
+286,Sultan Al-Ghannam
+287,Abdullah Madu
+288,Abdulelah Al-Amri
+289,Ali Al-Bulaihi
+290,Mohammed Al-Breik
+291,Salman Al-Faraj (captain)
+292,Abdulellah Al-Malki
+293,Firas Al-Buraikan
+294,Salem Al-Dawsari
+295,Saleh Al-Shehri
+296,Saud Abdulhamid
+297,Yasser Al-Shahrani
+298,Abdullah Otayf
+299,Ali Al-Hassan
+300,Sami Al-Najei
+301,Hassan Al-Tambakti
+302,Nawaf Al-Abed
+303,Hattan Bahebri
+304,Abdulrahman Al-Aboud
+305,Mohammed Al-Owais
+306,Nawaf Al-Aqidi
+307,Mohamed Kanno
+308,Nasser Al-Dawsari
+309,Haitham Asiri
+310,Riyadh Sharahili
+311,Mathew Ryan (captain)
+312,Miloš Degenek
+313,Nathaniel Atkinson
+314,Kye Rowles
+315,Fran Karačić
+316,Marco Tilio
+317,Mathew Leckie
+318,Bailey Wright
+319,Jamie Maclaren
+320,Ajdin Hrustic
+321,Awer Mabil
+322,Andrew Redmayne
+323,Aaron Mooy
+324,Riley McGree
+325,Mitchell Duke
+326,Aziz Behich
+327,Cameron Devlin
+328,Danny Vukovic
+329,Harry Souttar
+330,Thomas Deng
+331,Garang Kuol
+332,Jackson Irvine
+333,Craig Goodwin
+334,Joel King
+335,Jason Cummings
+336,Keanu Baccus
+337,Kasper Schmeichel
+338,Joachim Andersen
+339,Victor Nelsson
+340,Simon Kjær (captain)
+341,Joakim Mæhle
+342,Andreas Christensen
+343,Mathias Jensen
+344,Thomas Delaney
+345,Martin Braithwaite
+346,Christian Eriksen
+347,Andreas Skov Olsen
+348,Kasper Dolberg
+349,Rasmus Kristensen
+350,Mikkel Damsgaard
+351,Christian Nørgaard
+352,Oliver Christensen
+353,Jens Stryger Larsen
+354,Daniel Wass
+355,Jonas Wind
+356,Yussuf Poulsen
+357,Andreas Cornelius
+358,Frederik Rønnow
+359,Pierre-Emile Højbjerg
+360,Robert Skov
+361,Jesper Lindstrøm
+362,Alexander Bah
+363,Hugo Lloris (captain)
+364,Benjamin Pavard
+365,Axel Disasi
+366,Raphaël Varane
+367,Jules Koundé
+368,Matteo Guendouzi
+369,Antoine Griezmann
+370,Aurélien Tchouaméni
+371,Olivier Giroud
+372,Kylian Mbappé
+373,Ousmane Dembélé
+374,Randal Kolo Muani
+375,Youssouf Fofana
+376,Adrien Rabiot
+377,Jordan Veretout
+378,Steve Mandanda
+379,William Saliba
+380,Dayot Upamecano
+381,Kingsley Coman
+382,Lucas Hernandez
+383,Theo Hernandez
+384,Alphonse Areola
+385,Ibrahima Konaté
+386,Eduardo Camavinga
+387,Marcus Thuram
+388,Aymen Mathlouthi
+389,Bilel Ifa
+390,Montassar Talbi
+391,Yassine Meriah
+392,Nader Ghandri
+393,Dylan Bronn
+394,Youssef Msakni (captain)
+395,Hannibal Mejbri
+396,Issam Jebali
+397,Wahbi Khazri
+398,Taha Yassine Khenissi
+399,Ali Maâloul
+400,Ferjani Sassi
+401,Aïssa Laïdouni
+402,Mohamed Ali Ben Romdhane
+403,Aymen Dahmen
+404,Ellyes Skhiri
+405,Ghailene Chaalali
+406,Seifeddine Jaziri
+407,Mohamed Dräger
+408,Wajdi Kechrida
+409,Bechir Ben Saïd
+410,Naïm Sliti
+411,Ali Abdi
+412,Anis Ben Slimane
+413,Mouez Hassen
+414,Keylor Navas
+415,Daniel Chacón
+416,Juan Pablo Vargas
+417,Keysher Fuller
+418,Celso Borges
+419,Óscar Duarte
+420,Anthony Contreras
+421,Bryan Oviedo
+422,Jewison Bennette
+423,Bryan Ruiz (captain)
+424,Johan Venegas
+425,Joel Campbell
+426,Gerson Torres
+427,Youstin Salas
+428,Francisco Calvo
+429,Carlos Martínez
+430,Yeltsin Tejeda
+431,Esteban Alvarado
+432,Kendall Waston
+433,Brandon Aguilera
+434,Douglas López
+435,Rónald Matarrita
+436,Patrick Sequeira
+437,Roan Wilson
+438,Anthony Hernández
+439,Álvaro Zamora
+440,Manuel Neuer (captain)
+441,Antonio Rüdiger
+442,David Raum
+443,Matthias Ginter
+444,Thilo Kehrer
+445,Joshua Kimmich
+446,Kai Havertz
+447,Leon Goretzka
+448,Niclas Füllkrug
+449,Serge Gnabry
+450,Mario Götze
+451,Kevin Trapp
+452,Thomas Müller
+453,Jamal Musiala
+454,Niklas Süle
+455,Lukas Klostermann
+456,Julian Brandt
+457,Jonas Hofmann
+458,Leroy Sané
+459,Christian Günter
+460,İlkay Gündoğan
+461,Marc-André ter Stegen
+462,Nico Schlotterbeck
+463,Karim Adeyemi
+464,Armel Bella-Kotchap
+465,Youssoufa Moukoko
+466,Eiji Kawashima
+467,Miki Yamane
+468,Shogo Taniguchi
+469,Ko Itakura
+470,Yuto Nagatomo
+471,Wataru Endo
+472,Gaku Shibasaki
+473,Ritsu Dōan
+474,Kaoru Mitoma
+475,Takumi Minamino
+476,Takefusa Kubo
+477,Shūichi Gonda
+478,Hidemasa Morita
+479,Junya Ito
+480,Daichi Kamada
+481,Takehiro Tomiyasu
+482,Ao Tanaka
+483,Takuma Asano
+484,Hiroki Sakai
+485,Shuto Machino
+486,Ayase Ueda
+487,Maya Yoshida (captain)
+488,Daniel Schmidt
+489,Yuki Soma
+490,Daizen Maeda
+491,Hiroki Ito
+492,Robert Sánchez
+493,César Azpilicueta
+494,Eric García
+495,Pau Torres
+496,Sergio Busquets (captain)
+497,Marcos Llorente
+498,Álvaro Morata
+499,Koke
+500,Gavi
+501,Marco Asensio
+502,Ferran Torres
+503,Nico Williams
+504,David Raya
+505,Alejandro Balde
+506,Hugo Guillamón
+507,Rodri
+508,Yeremy Pino
+509,Jordi Alba
+510,Carlos Soler
+511,Dani Carvajal
+512,Dani Olmo
+513,Pablo Sarabia
+514,Unai Simón
+515,Aymeric Laporte
+516,Ansu Fati
+517,Pedri
+518,Thibaut Courtois
+519,Toby Alderweireld
+520,Arthur Theate
+521,Wout Faes
+522,Jan Vertonghen
+523,Axel Witsel
+524,Kevin De Bruyne
+525,Youri Tielemans
+526,Romelu Lukaku
+527,Eden Hazard (captain)
+528,Yannick Carrasco
+529,Simon Mignolet
+530,Koen Casteels
+531,Dries Mertens
+532,Thomas Meunier
+533,Thorgan Hazard
+534,Leandro Trossard
+535,Amadou Onana
+536,Leander Dendoncker
+537,Hans Vanaken
+538,Timothy Castagne
+539,Charles De Ketelaere
+540,Michy Batshuayi
+541,Loïs Openda
+542,Jérémy Doku
+543,Zeno Debast
+544,Dayne St. Clair
+545,Alistair Johnston
+546,Sam Adekugbe
+547,Kamal Miller
+548,Steven Vitória
+549,Samuel Piette
+550,Stephen Eustáquio
+551,Liam Fraser
+552,Lucas Cavallini
+553,Junior Hoilett
+554,Tajon Buchanan
+555,Iké Ugbo
+556,Atiba Hutchinson (captain)
+557,Mark-Anthony Kaye
+558,Ismaël Koné
+559,James Pantemis
+560,Cyle Larin
+561,Milan Borjan
+562,Alphonso Davies
+563,Jonathan David
+564,Jonathan Osorio
+565,Richie Laryea
+566,Liam Millar
+567,David Wotherspoon
+568,Derek Cornelius
+569,Joel Waterman
+570,Dominik Livaković
+571,Josip Stanišić
+572,Borna Barišić
+573,Ivan Perišić
+574,Martin Erlić
+575,Dejan Lovren
+576,Lovro Majer
+577,Mateo Kovačić
+578,Andrej Kramarić
+579,Luka Modrić (captain)
+580,Marcelo Brozović
+581,Ivo Grbić
+582,Nikola Vlašić
+583,Marko Livaja
+584,Mario Pašalić
+585,Bruno Petković
+586,Ante Budimir
+587,Mislav Oršić
+588,Borna Sosa
+589,Joško Gvardiol
+590,Domagoj Vida
+591,Josip Juranović
+592,Ivica Ivušić
+593,Josip Šutalo
+594,Luka Sučić
+595,Kristijan Jakić
+596,Yassine Bounou
+597,Achraf Hakimi
+598,Noussair Mazraoui
+599,Sofyan Amrabat
+600,Nayef Aguerd
+601,Romain Saïss (captain)
+602,Hakim Ziyech
+603,Azzedine Ounahi
+604,Abderrazak Hamdallah
+605,Anass Zaroury
+606,Abdelhamid Sabiri
+607,Munir Mohamedi
+608,Ilias Chair
+609,Zakaria Aboukhlal
+610,Selim Amallah
+611,Abde Ezzalzouli
+612,Sofiane Boufal
+613,Jawad El Yamiq
+614,Youssef En-Nesyri
+615,Achraf Dari
+616,Walid Cheddira
+617,Ahmed Reda Tagnaouti
+618,Bilal El Khannous
+619,Badr Benoun
+620,Yahia Attiyat Allah
+621,Yahya Jabrane
+622,Alisson
+623,Danilo
+624,Thiago Silva (captain)
+625,Marquinhos
+626,Casemiro
+627,Alex Sandro
+628,Lucas Paquetá
+629,Fred
+630,Richarlison
+631,Neymar
+632,Raphinha
+633,Weverton
+634,Dani Alves
+635,Éder Militão
+636,Fabinho
+637,Alex Telles
+638,Bruno Guimarães
+639,Gabriel Jesus
+640,Antony
+641,Vinícius Júnior
+642,Rodrygo
+643,Éverton Ribeiro
+644,Ederson
+645,Bremer
+646,Pedro
+647,Gabriel Martinelli
+648,Simon Ngapandouetnbu
+649,Jerome Ngom Mbekeli
+650,Nicolas Nkoulou
+651,Christopher Wooh
+652,Gaël Ondoua
+653,Moumi Ngamaleu
+654,Georges-Kévin Nkoudou
+655,André-Frank Zambo Anguissa
+656,Jean-Pierre Nsame
+657,Vincent Aboubakar (captain)
+658,Christian Bassogog
+659,Karl Toko Ekambi
+660,Eric Maxim Choupo-Moting
+661,Samuel Gouet
+662,Pierre Kunde
+663,Devis Epassy
+664,Olivier Mbaizo
+665,Martin Hongla
+666,Collins Fai
+667,Bryan Mbeumo
+668,Jean-Charles Castelletto
+669,Olivier Ntcham
+670,André Onana
+671,Enzo Ebosse
+672,Nouhou Tolo
+673,Souaibou Marou
+674,Marko Dmitrović
+675,Strahinja Pavlović
+676,Strahinja Eraković
+677,Nikola Milenković
+678,Miloš Veljković
+679,Nemanja Maksimović
+680,Nemanja Radonjić
+681,Nemanja Gudelj
+682,Aleksandar Mitrović
+683,Dušan Tadić (captain)
+684,Luka Jović
+685,Predrag Rajković
+686,Stefan Mitrović
+687,Andrija Živković
+688,Srđan Babić
+689,Saša Lukić
+690,Filip Kostić
+691,Dušan Vlahović
+692,Uroš Račić
+693,Sergej Milinković-Savić
+694,Filip Đuričić
+695,Darko Lazović
+696,Vanja Milinković-Savić
+697,Ivan Ilić
+698,Filip Mladenović
+699,Marko Grujić
+700,Yann Sommer
+701,Edimilson Fernandes
+702,Silvan Widmer
+703,Nico Elvedi
+704,Manuel Akanji
+705,Denis Zakaria
+706,Breel Embolo
+707,Remo Freuler
+708,Haris Seferovic
+709,Granit Xhaka (captain)
+710,Renato Steffen
+711,Jonas Omlin
+712,Ricardo Rodriguez
+713,Michel Aebischer
+714,Djibril Sow
+715,Christian Fassnacht
+716,Ruben Vargas
+717,Eray Cömert
+718,Noah Okafor
+719,Fabian Frei
+720,Gregor Kobel
+721,Fabian Schär
+722,Xherdan Shaqiri
+723,Philipp Köhn
+724,Fabian Rieder
+725,Ardon Jashari
+726,Lawrence Ati-Zigi
+727,Tariq Lamptey
+728,Denis Odoi
+729,Mohammed Salisu
+730,Thomas Partey
+731,Elisha Owusu
+732,Abdul Fatawu Issahaku
+733,Daniel-Kofi Kyereh
+734,Jordan Ayew
+735,André Ayew (captain)
+736,Osman Bukari
+737,Ibrahim Danlad
+738,Daniel Afriyie
+739,Gideon Mensah
+740,Joseph Aidoo
+741,Abdul Manaf Nurudeen
+742,Baba Rahman
+743,Daniel Amartey
+744,Iñaki Williams
+745,Mohammed Kudus
+746,Salis Abdul Samed
+747,Kamaldeen Sulemana
+748,Alexander Djiku
+749,Kamal Sowah
+750,Antoine Semenyo
+751,Alidu Seidu
+752,Rui Patrício
+753,Diogo Dalot
+754,Pepe
+755,Rúben Dias
+756,Raphaël Guerreiro
+757,João Palhinha
+758,Cristiano Ronaldo (captain)
+759,Bruno Fernandes
+760,André Silva
+761,Bernardo Silva
+762,João Félix
+763,José Sá
+764,Danilo Pereira
+765,William Carvalho
+766,Rafael Leão
+767,Vitinha
+768,João Mário
+769,Rúben Neves
+770,Nuno Mendes
+771,João Cancelo
+772,Ricardo Horta
+773,Diogo Costa
+774,Matheus Nunes
+775,António Silva
+776,Otávio
+777,Gonçalo Ramos
+778,Kim Seung-gyu
+779,Yoon Jong-gyu
+780,Kim Jin-su
+781,Kim Min-jae
+782,Jung Woo-young
+783,Hwang In-beom
+784,Son Heung-min (captain)
+785,Paik Seung-ho
+786,Cho Gue-sung
+787,Lee Jae-sung
+788,Hwang Hee-chan
+789,Song Bum-keun
+790,Son Jun-ho
+791,Hong Chul
+792,Kim Moon-hwan
+793,Hwang Ui-jo
+794,Na Sang-ho
+795,Lee Kang-in
+796,Kim Young-gwon
+797,Kwon Kyung-won
+798,Jo Hyeon-woo
+799,Kwon Chang-hoon
+800,Kim Tae-hwan
+801,Cho Yu-min
+802,Jeong Woo-yeong
+803,Song Min-kyu
+804,Fernando Muslera
+805,José Giménez
+806,Diego Godín (captain)
+807,Ronald Araújo
+808,Matías Vecino
+809,Rodrigo Bentancur
+810,Nicolás de la Cruz
+811,Facundo Pellistri
+812,Luis Suárez
+813,Giorgian de Arrascaeta
+814,Darwin Núñez
+815,Sebastián Sosa
+816,Guillermo Varela
+817,Lucas Torreira
+818,Federico Valverde
+819,Mathías Olivera
+820,Matías Viña
+821,Maxi Gómez
+822,Sebastián Coates
+823,Facundo Torres
+824,Edinson Cavani
+825,Martín Cáceres
+826,Sergio Rochet
+827,Agustín Canobbio
+828,Manuel Ugarte
+829,José Luis Rodríguez
