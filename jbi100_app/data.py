@@ -2,9 +2,10 @@ import pandas as pd
 import plotly.express as px
 
 def get_data():
+
     # Read data
-    df_match_data = pd.read_csv('Data/FIFA World Cup 2022 Match Data/data.csv', delimiter=',')
-    df_extra_match_data = pd.read_csv('Data/Match formations.csv')
+    df_match_data = pd.read_csv('jbi100_app/Data/FIFA World Cup 2022 Match Data/data.csv', delimiter=',')
+    df_extra_match_data = pd.read_csv('jbi100_app/Data/Match formations.csv')
     
     df_match_data['score'] = df_match_data['score'].str.replace(r"\(.\)","")           
     df_match_data[['score_home', 'score_away']] = df_match_data.score.str.split("–", expand=True,)
@@ -50,6 +51,7 @@ def get_data():
         else:
             winning_formation.append(None)
             losing_formation.append(None)
+
     df_wins_losses = pd.DataFrame({
     'winning_formation': winning_formation,
     'losing_formation': losing_formation
@@ -57,6 +59,27 @@ def get_data():
 
     df = df_all_match_data
 
-    print(df_wins_losses)
+        # Drop rows with NaN values (None in the formations)
+    df_wins_losses = df_wins_losses.dropna()
 
-    return df_wins_losses, df
+    # Set a threshold count for formations
+    threshold_count = 100  # Change this threshold to your desired value
+
+    # Count occurrences of each formation pair
+    formation_counts = df_wins_losses.groupby(['winning_formation', 'losing_formation']).size()
+
+    # Filter formation pairs by the threshold count
+    valid_formations = formation_counts[formation_counts >= threshold_count]
+
+    # Get only rows with valid formations
+    filtered_data = df_wins_losses[
+        df_wins_losses.apply(lambda row: (row['winning_formation'], row['losing_formation']) in valid_formations.index, axis=1)
+    ]
+
+    # Count occurrences of filtered formation pairs
+    filtered_counts = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
+
+    # Calculate win/lose ratios
+    formation_ratios = filtered_counts.div(filtered_counts.sum(axis=1), axis=0)
+    print(formation_ratios.head(10))
+    return df_wins_losses

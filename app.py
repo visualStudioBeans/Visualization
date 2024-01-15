@@ -12,10 +12,11 @@ if __name__ == '__main__':
     # Create data
     df = px.data.iris()
     df2 = px.data.medals_wide(indexed=True)
-    df3 = data.get_data()
+    formation_ratios = data.get_data()
+    
     # Instantiate custom views
     scatterplot1 = Scatterplot("Scatterplot 1", 'sepal_length', 'sepal_width', df)
-    heatmap1 = DensityHeatmap(name='Heatmap',feature_y="nation",feature_x= "medal",df=df)
+    heatmap1 = DensityHeatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="winning_formation",feature_x= "losing_formation")
 
     app.layout = html.Div(
         id="app-container",
@@ -32,7 +33,6 @@ if __name__ == '__main__':
                 id="right-column",
                 className="nine columns",
                 children=[
-                    scatterplot1,
                     heatmap1
                 ],
             ),

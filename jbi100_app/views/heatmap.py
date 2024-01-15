@@ -22,14 +22,11 @@ class DensityHeatmap(html.Div):
 
     def update(self):
         # Create a density heatmap using Plotly Express
-        fig = px.imshow(self.df)
+        fig = px.density_heatmap(self.df, x=self.feature_x, y=self.feature_y)
         fig.update_layout(
-            xaxis_title=  self.feature_x,
-            yaxis_title=  self.feature_y
+            xaxis_title=self.feature_x,
+            yaxis_title=self.feature_y
         )
-        
-        fig.update_xaxes(fixedrange=True)
-        fig.update_yaxes(fixedrange=True)
 
         # Update the Graph component with the new figure
         self.children[1].figure = fig
