@@ -31,12 +31,12 @@ def get_data():
             elif (df_match_data["score_home"][i][0] == df_match_data["score_away"][i][0]):
                 winning_formation.append(None)
                 losing_formation.append(None)
-        elif (df_match_data["score_home"][i][1] > df_match_data["score_away"][i][3]):
-            winning_formation.append(df_match_data["home_formation"][i])
-            losing_formation.append(df_match_data["away_formation"][i])
-        elif (df_match_data["score_home"][i][1] < df_match_data["score_away"][i][3]):
-            winning_formation.append(df_match_data["away_formation"][i])
-            losing_formation.append(df_match_data["home_formation"][i])
+            elif (df_match_data["score_home"][i][1] > df_match_data["score_away"][i][3]):
+                winning_formation.append(df_match_data["home_formation"][i])
+                losing_formation.append(df_match_data["away_formation"][i])
+            elif (df_match_data["score_home"][i][1] < df_match_data["score_away"][i][3]):
+                winning_formation.append(df_match_data["away_formation"][i])
+                losing_formation.append(df_match_data["home_formation"][i])
         else:
             winning_formation.append(None)
             losing_formation.append(None)
@@ -63,11 +63,11 @@ def get_data():
     df_wins_losses = df_wins_losses.dropna()
 
     # Set a threshold count for formations
-    threshold_count = 100  # Change this threshold to your desired value
+    threshold_count = 50
 
     # Count occurrences of each formation pair
     formation_counts = df_wins_losses.groupby(['winning_formation', 'losing_formation']).size()
-
+    
     # Filter formation pairs by the threshold count
     valid_formations = formation_counts[formation_counts >= threshold_count]
 
@@ -81,5 +81,5 @@ def get_data():
 
     # Calculate win/lose ratios
     formation_ratios = filtered_counts.div(filtered_counts.sum(axis=1), axis=0)
-    print(formation_ratios.head(10))
-    return df_wins_losses
+
+    return formation_ratios

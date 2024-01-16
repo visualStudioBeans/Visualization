@@ -22,10 +22,17 @@ class DensityHeatmap(html.Div):
 
     def update(self):
         # Create a density heatmap using Plotly Express
-        fig = px.density_heatmap(self.df, x=self.feature_x, y=self.feature_y)
+        fig = px.imshow(self.df,
+                        labels=dict(x="Winning formation", y="Losing formation", color= "Ratio"),
+                        x=self.df.columns,
+                        y=self.df.index,
+                        color_continuous_scale="Viridis",
+                        aspect= 'equal')
+        
         fig.update_layout(
             xaxis_title=self.feature_x,
-            yaxis_title=self.feature_y
+            yaxis_title=self.feature_y,
+            coloraxis_colorbar=dict(title="Ratio")
         )
 
         # Update the Graph component with the new figure

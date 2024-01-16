@@ -16,7 +16,7 @@ if __name__ == '__main__':
     
     # Instantiate custom views
     scatterplot1 = Scatterplot("Scatterplot 1", 'sepal_length', 'sepal_width', df)
-    heatmap1 = DensityHeatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="winning_formation",feature_x= "losing_formation")
+    heatmap1 = DensityHeatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
 
     app.layout = html.Div(
         id="app-container",
