@@ -10,12 +10,9 @@ from jbi100_app import data
 
 if __name__ == '__main__':
     # Create data
-    df = px.data.iris()
-    df2 = px.data.medals_wide(indexed=True)
     formation_ratios = data.get_data()
     
     # Instantiate custom views
-    scatterplot1 = Scatterplot("Scatterplot 1", 'sepal_length', 'sepal_width', df)
     heatmap1 = DensityHeatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
 
     app.layout = html.Div(
@@ -38,14 +35,5 @@ if __name__ == '__main__':
             ),
         ],
     )
-
-    # Define interactions
-    @app.callback(
-        Output(scatterplot1.html_id, "figure"), [
-        Input("select-color-scatter-1", "value"),
-        Input(scatterplot1.html_id, 'selectedData')
-    ])
-    def update_scatter_1(selected_color, selected_data):
-        return scatterplot1.update(selected_color, selected_data)
 
     app.run_server(debug=False, dev_tools_ui=False)
