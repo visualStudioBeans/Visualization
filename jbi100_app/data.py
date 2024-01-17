@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def get_data():
 
@@ -62,17 +63,27 @@ def get_data():
 
     # Filter formation pairs by the threshold count
     valid_formations = formation_counts[formation_counts >= threshold_count]
-    
+
     # Get only rows with valid formations
     filtered_data = df_wins_losses[
         df_wins_losses.apply(lambda row: (row['winning_formation'], row['losing_formation']) in valid_formations.index, axis=1)
     ]
 
-    # Count occurrences of filtered formation pairs
-    filtered_counts = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
+    # Count occurrences of how many times A wins from B
+    wins_from_a_to_b = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
 
+    # Count occurrences of how many times B wins from A
+    wins_from_b_to_a = filtered_data.groupby(['losing_formation', 'winning_formation']).size().unstack(fill_value=0)
 
-    # Calculate win/lose ratios
-    formation_ratios = filtered_counts.div(filtered_counts.sum(axis=1), axis=0)
-    
-    return formation_ratios
+    # Create a DataFrame to store the ratio of A wins from B to B wins from A
+    ratio_df = wins_from_a_to_b / wins_from_b_to_a
+
+    # Replace inf values with 2 (should probably think about this more)
+    ratio_df.replace([np.inf, -np.inf], 2, inplace=True)
+
+    # Replace NaN values with 0s
+    ratio_df = ratio_df.fillna(0)
+
+    print(ratio_df)
+
+    return ratio_df
