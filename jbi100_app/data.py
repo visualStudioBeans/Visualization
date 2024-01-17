@@ -38,8 +38,10 @@ def get_data():
                 winning_formation.append(df_all_match_data["home_formation"][i])
                 losing_formation.append(df_all_match_data["away_formation"][i])
         else:
-            winning_formation.append(None)
-            losing_formation.append(None)
+            winning_formation.append(df_all_match_data["away_formation"][i])
+            losing_formation.append(df_all_match_data["home_formation"][i])
+            winning_formation.append(df_all_match_data["home_formation"][i])
+            losing_formation.append(df_all_match_data["away_formation"][i])
 
     df_wins_losses = pd.DataFrame({
     'winning_formation': winning_formation,
@@ -53,12 +55,14 @@ def get_data():
     # Set a threshold count for formations
     threshold_count = 50
 
+    #df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]
+
     # Count occurrences of each formation pair
     formation_counts = df_wins_losses.groupby(['winning_formation', 'losing_formation']).size()
-    
+
     # Filter formation pairs by the threshold count
     valid_formations = formation_counts[formation_counts >= threshold_count]
-
+    
     # Get only rows with valid formations
     filtered_data = df_wins_losses[
         df_wins_losses.apply(lambda row: (row['winning_formation'], row['losing_formation']) in valid_formations.index, axis=1)
@@ -67,7 +71,8 @@ def get_data():
     # Count occurrences of filtered formation pairs
     filtered_counts = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
 
+
     # Calculate win/lose ratios
     formation_ratios = filtered_counts.div(filtered_counts.sum(axis=1), axis=0)
-
+    
     return formation_ratios
