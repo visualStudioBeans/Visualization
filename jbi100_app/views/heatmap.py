@@ -20,10 +20,10 @@ class DensityHeatmap(html.Div):
         # Initial update
         self.update()
 
-    def update(self):
+    def update(self, ):
         # Create a density heatmap using Plotly Express
         fig = px.imshow(self.df,
-                        labels=dict(x="Winning formation", y="Losing formation", color= "Ratio"),
+                        labels=dict(y="Winning formation", x="Losing formation", color= "Ratio"),
                         x=self.df.columns,
                         y=self.df.index,
                         color_continuous_scale="Viridis",
