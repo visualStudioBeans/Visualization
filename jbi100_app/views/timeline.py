@@ -1,5 +1,6 @@
 from dash import dcc, html
 import plotly.express as px
+import pandas as pd
 
 class Timeline(html.Div):
     def __init__(self, name, formation, df):
@@ -16,10 +17,20 @@ class Timeline(html.Div):
             ],
         )
 
+        self.update()
+
     def update(self):
+        self.df['date'] = pd.to_datetime(self.df['date'])
+        # Filter data for the specific formation
+        filtered_df = self.df[(self.df['winning_formation'] == self.formation) | (self.df['losing_formation'] == self.formation)]
+
+        # Combine counts for winning and losing formations
+        date_counts = filtered_df.groupby('date').size().reset_index(name='count')
+        print(date_counts)
+        
         fig = px.histogram(
-            self.df,
-            x=self.formation,
+            date_counts,
+            x='date',
             marginal='rug',
             nbins=30,
             histnorm='density',
@@ -31,8 +42,8 @@ class Timeline(html.Div):
             yaxis_zeroline=False,
             xaxis_zeroline=False,
             dragmode='select',
-            xaxis_title=self.formation,
-            yaxis_title='Density',
+            xaxis_title='Date',
+            yaxis_title='Count',
             showlegend=False
         )
 

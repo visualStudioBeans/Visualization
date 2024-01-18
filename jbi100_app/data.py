@@ -88,13 +88,13 @@ def get_data():
     date = []
     for i in range(len(df_all_match_data)):
         if(i<len(df_match_data)):
-            date.append(df_match_data['match_time'][i].split()[0])
+            date.append(df_match_data['match_time'][i])
             if (df_all_match_data["score_home"][i] == df_all_match_data["score_away"][i]):
-                 date.append(df_match_data['match_time'][i].split()[0])
+                 date.append(df_match_data['match_time'][i])
         else:
-            date.append(df_extra_match_data['date'][i-len(df_match_data)].split()[0])
+            date.append(df_extra_match_data['date'][i-len(df_match_data)])
             if (df_all_match_data["score_home"][i] == df_all_match_data["score_away"][i]):
-                 date.append(df_extra_match_data['date'][i-len(df_match_data)].split()[0])
+                 date.append(df_extra_match_data['date'][i-len(df_match_data)])
     
     # data for the timeline
     wl_date_df = pd.DataFrame({
