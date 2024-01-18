@@ -105,5 +105,6 @@ def get_data():
     
     wl_data_df_sorted = wl_date_df.sort_values(by='date')
 
-    #first output is for heatmap, second for timeline
-    return ratio_df, wl_data_df_sorted
+    # violinplot data is not implemented yet
+    #first output is for heatmap, second for timeline, third for violinplot
+    return ratio_df, wl_data_df_sorted, df_all_match_data

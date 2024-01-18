@@ -23,9 +23,11 @@ class Timeline(html.Div):
 
     def update(self):
         # Filter DataFrame for the selected user formation
+        # only counts winning matches right now
         filtered_df = self.df[self.df['winning_formation'].apply(lambda x: self.user_formation in x)]
 
         # Create histogram with kernel density estimate
+        # This can be edited to an figure_factory kernel density plot but i could not figure how yet
         fig = px.histogram(filtered_df, x='date', nbins=30, marginal='box', histnorm='probability',
                            title=f'Kernel Density Plot of {self.user_formation} in Winning Formations')
 
