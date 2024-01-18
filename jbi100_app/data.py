@@ -27,7 +27,7 @@ def get_data():
 
     df_all_match_data = pd.concat([df_match_data, df_extra_match_data],  join="inner", ignore_index=True)
     pd.set_option("display.max_rows", None, "display.max_columns", None)
-   
+
     winning_formation = []
     losing_formation = []
 
@@ -48,7 +48,6 @@ def get_data():
     'winning_formation': winning_formation,
     'losing_formation': losing_formation
     })
-
 
     # Drop rows with NaN values (None in the formations)
     df_wins_losses = df_wins_losses.dropna()
@@ -84,6 +83,27 @@ def get_data():
     # Replace NaN values with 0s
     ratio_df = ratio_df.fillna(0)
 
-    print(ratio_df)
 
-    return ratio_df
+    # create list of dates to use for timeline graph
+    date = []
+    for i in range(len(df_all_match_data)):
+        if(i<len(df_match_data)):
+            date.append(df_match_data['match_time'][i].split()[0])
+            if (df_all_match_data["score_home"][i] == df_all_match_data["score_away"][i]):
+                 date.append(df_match_data['match_time'][i].split()[0])
+        else:
+            date.append(df_extra_match_data['date'][i-len(df_match_data)].split()[0])
+            if (df_all_match_data["score_home"][i] == df_all_match_data["score_away"][i]):
+                 date.append(df_extra_match_data['date'][i-len(df_match_data)].split()[0])
+    
+    # data for the timeline
+    wl_date_df = pd.DataFrame({
+    'date': date,
+    'winning_formation': winning_formation,
+    'losing_formation': losing_formation
+    })
+    
+    wl_data_df_sorted = wl_date_df.sort_values(by='date')
+
+    #first output is for heatmap, second for timeline
+    return ratio_df, wl_data_df_sorted
