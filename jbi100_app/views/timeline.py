@@ -1,5 +1,6 @@
 from dash import dcc, html
 import plotly.express as px
+import plotly.figure_factory as ff
 import pandas as pd
 
 
@@ -25,7 +26,7 @@ class Timeline(html.Div):
         filtered_df = self.df[self.df['winning_formation'].apply(lambda x: self.user_formation in x)]
 
         # Create histogram with kernel density estimate
-        fig = px.histogram(filtered_df, x='date', nbins=30, marginal='rug', histnorm='probability density',
+        fig = px.histogram(filtered_df, x='date', nbins=30, marginal='box', histnorm='probability',
                            title=f'Kernel Density Plot of {self.user_formation} in Winning Formations')
 
         fig.update_layout(
