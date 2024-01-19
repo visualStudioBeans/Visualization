@@ -6,6 +6,7 @@ def get_data():
     # Read data
     df_match_data = pd.read_csv('jbi100_app/Data/FIFA World Cup 2022 Match Data/data.csv', delimiter=',')
     df_extra_match_data = pd.read_csv('jbi100_app/Data/Match formations.csv')
+    df_extra_shot_data = pd.read_csv('jbi100_app/Data/MatchShots.csv')
 
     # Split the score into home and away scores
     df_match_data[['score_home', 'score_away']] = df_match_data['score'].str.split("–", expand=True)
