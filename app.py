@@ -12,7 +12,7 @@ from jbi100_app import data
 
 if __name__ == '__main__':
     # Create data
-    formation_ratios, timeline_data, violin_data = data.get_data()
+    formation_ratios, timeline_data, violin_data, radar_data = data.get_data()
     
     # temp formation for timeline and violinplot
     formation = '3-3-4'
