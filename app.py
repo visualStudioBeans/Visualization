@@ -15,8 +15,8 @@ if __name__ == '__main__':
     formation_ratios, timeline_data, violin_data = data.get_data()
     
     # temp formation for timeline and violinplot
-    formation = '4-3-3'
-    formation2 = '5-3-2'
+    formation = '3-3-4'
+    formation2 = '2-4-4'
 
     # Instantiate custom views
     heatmap1 = DensityHeatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
@@ -45,5 +45,7 @@ if __name__ == '__main__':
             ),
         ],
     )
+
+    print( "het lukt")
 
     app.run_server(debug=False, dev_tools_ui=False)

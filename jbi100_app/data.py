@@ -108,4 +108,4 @@ def get_data():
 
     # violinplot data is not implemented yet
     #first output is for heatmap, second for timeline, third for violinplot
-    return ratio_df, wl_data_df_sorted, df_all_match_data
+    return ratio_df, wl_data_df_sorted, df_extra_shot_data
