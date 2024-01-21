@@ -52,5 +52,5 @@ class Radarplot(html.Div):
             'cross': filter_df.apply(lambda row: row['home_cross'] if row['home_formation'] == formation else row['away_cross'], axis=1),
             'possession': filter_df.apply(lambda row: row['home_possession'] if row['home_formation'] == formation else row['away_possession'], axis=1),
         })
-        print(clean_df)
+
         return clean_df
