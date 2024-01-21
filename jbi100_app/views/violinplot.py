@@ -32,7 +32,7 @@ class Violinplot(html.Div):
 
         filter_df2 = self.df[self.df['home_formation'].apply(lambda x: self.formation2 in x) | 
                             self.df['away_formation'].apply(lambda x: self.formation2 in x)]
-
+        
         clean_df1 = self._create_clean_df(filter_df1, self.formation1)
         clean_df2 = self._create_clean_df(filter_df2, self.formation2)
 
