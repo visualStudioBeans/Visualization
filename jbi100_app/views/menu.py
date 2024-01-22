@@ -33,13 +33,6 @@ def generate_control_card():
                 options=colorscales,
                 value='viridis',
             ),
-            html.Br(),
-            html.Label("Color scatterplot 2"),
-            dcc.Dropdown(
-                id="select-color-scatter-2",
-                options=   1,
-                value=colorscales[0],
-            ),
         ], style={"textAlign": "float-left"}
     )
 

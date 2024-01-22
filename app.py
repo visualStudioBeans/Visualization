@@ -13,15 +13,15 @@ from jbi100_app import data
 
 if __name__ == '__main__':
     # Create data
-    formation_ratios, timeline_data, violin_data, radar_data = data.get_data()
-    
+    formation_ratios, timeline_data, violin_data, radar_data, all_formations = data.get_data()
+
     # temp formation for timeline and violinplot
     formation1 = '3-3-4'
     formation2 = '2-4-4'
 
     # Instantiate custom views
     heatmap1 = Heatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
-    timeline1 = Timeline(name="Formation succes over time", df=timeline_data, formation=formation1)
+    timeline1 = Timeline(name="Formation succes over time", df=timeline_data, possible_formations=all_formations)
     violinplot1 = Violinplot(name="Was een beer", formation1=formation1, formation2=formation2, df=violin_data)
     radarplot1 = Radarplot(name="Was twee beren", formation1=formation1, formation2=formation2, df=radar_data)
 
@@ -53,10 +53,17 @@ if __name__ == '__main__':
     @app.callback(
         Output(heatmap1.html_id, "figure"), [
         Input("select-color-heatmap", "value"),
-        Input(heatmap1.html_id, 'selected_data')
-    ])
+        Input(heatmap1.html_id, 'selected_data')]
+    )
     def update_heatmap1(selected_color, selected_data):
         return heatmap1.update(selected_color, selected_data)
-
+    
+    @app.callback(
+        Output(timeline1.html_id, "figure"), [
+        Input("select-team-timeline", "value"),
+        Input(timeline1.html_id, 'selected_data')]
+    )
+    def update_timeline1(selected_formation, selected_data):
+        return timeline1.update(selected_formation, selected_data)
 
     app.run_server(debug=False, dev_tools_ui=False)

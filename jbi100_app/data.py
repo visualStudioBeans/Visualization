@@ -55,7 +55,7 @@ def get_data():
     df_wins_losses = df_wins_losses.dropna()
 
     # Set a threshold count for formations
-    threshold_count = 50
+    threshold_count = 100
 
     #df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]
 
@@ -107,6 +107,13 @@ def get_data():
     
     wl_data_df_sorted = wl_date_df.sort_values(by='date')
 
+    # all used formations (for timeline)
+    # Extract unique formations from home_formation and away_formation columns
+    unique_formations_home = df_all_match_data['home_formation'].unique() 
+    unique_formations_away = df_all_match_data['away_formation'].unique()
+    # Combine unique formations from both columns
+    all_formations = list(set(unique_formations_home).union(unique_formations_away))
+
     # violinplot data is not implemented yet
     #first output is for heatmap, second for timeline, third for violinplot, fourth for radarplot
-    return ratio_df, wl_data_df_sorted, df_extra_shot_data, df_extra_info
+    return ratio_df, wl_data_df_sorted, df_extra_shot_data, df_extra_info, all_formations
