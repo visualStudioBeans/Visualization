@@ -1,7 +1,7 @@
 from jbi100_app.main import app
 from jbi100_app.views.menu import make_menu_layout
 from jbi100_app.views.scatterplot import Scatterplot
-from jbi100_app.views.heatmap import DensityHeatmap
+from jbi100_app.views.heatmap import Heatmap
 from jbi100_app.views.timeline import Timeline
 from jbi100_app.views.violinplot import Violinplot
 from jbi100_app.views.radarplot import Radarplot 
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     formation2 = '2-4-4'
 
     # Instantiate custom views
-    heatmap1 = DensityHeatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
+    heatmap1 = Heatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
     timeline1 = Timeline(name="Formation succes over time", df=timeline_data, formation=formation1)
     violinplot1 = Violinplot(name="Was een beer", formation1=formation1, formation2=formation2, df=violin_data)
     radarplot1 = Radarplot(name="Was twee beren", formation1=formation1, formation2=formation2, df=radar_data)
@@ -48,5 +48,15 @@ if __name__ == '__main__':
             ),
         ],
     )
+
+    # Define interactions
+    @app.callback(
+        Output(heatmap1.html_id, "figure"), [
+        Input("select-color-heatmap", "value"),
+        Input(heatmap1.html_id, 'selected_data')
+    ])
+    def update_heatmap1(selected_color, selected_data):
+        return heatmap1.update(selected_color, selected_data)
+
 
     app.run_server(debug=False, dev_tools_ui=False)

@@ -1,6 +1,6 @@
 from dash import dcc, html
-from ..config import color_list1, color_list2
-
+import plotly.express as px
+colorscales = px.colors.named_colorscales()
 
 def generate_description_card():
     """
@@ -27,18 +27,18 @@ def generate_control_card():
     return html.Div(
         id="control-card",
         children=[
-            html.Label("Color scatterplot 1"),
+            html.Label("Color heatmap"),
             dcc.Dropdown(
-                id="select-color-scatter-1",
-                options=[{"label": i, "value": i} for i in color_list1],
-                value=color_list1[0],
+                id="select-color-heatmap",
+                options=colorscales,
+                value='viridis',
             ),
             html.Br(),
             html.Label("Color scatterplot 2"),
             dcc.Dropdown(
                 id="select-color-scatter-2",
-                options=[{"label": i, "value": i} for i in color_list2],
-                value=color_list2[0],
+                options=   1,
+                value=colorscales[0],
             ),
         ], style={"textAlign": "float-left"}
     )

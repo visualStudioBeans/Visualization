@@ -1,7 +1,7 @@
 from dash import dcc, html
 import plotly.express as px
 
-class DensityHeatmap(html.Div):
+class Heatmap(html.Div):
     def __init__(self, name, df, feature_x, feature_y):
         self.html_id = name.lower().replace(" ", "-")
         self.df = df
@@ -17,16 +17,13 @@ class DensityHeatmap(html.Div):
             ],
         )
 
-        # Initial update
-        self.update()
-
-    def update(self, ):
+    def update(self, selected_color, selected_data):
         # Create a density heatmap using Plotly Express
         fig = px.imshow(self.df,
                         labels=dict(y="Winning formation", x="Losing formation", color= "Ratio"),
                         x=self.df.columns,
                         y=self.df.index,
-                        color_continuous_scale="Viridis",
+                        color_continuous_scale=selected_color,
                         aspect= 'equal')
         
         fig.update_layout(
@@ -35,5 +32,5 @@ class DensityHeatmap(html.Div):
             coloraxis_colorbar=dict(title="Ratio")
         )
 
-        # Update the Graph component with the new figure
-        self.children[1].figure = fig
+        return fig
+
