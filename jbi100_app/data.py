@@ -108,12 +108,16 @@ def get_data():
     wl_data_df_sorted = wl_date_df.sort_values(by='date')
 
     # all used formations (for timeline)
-    # Extract unique formations from home_formation and away_formation columns
-    unique_formations_home = df_all_match_data['home_formation'].unique() 
-    unique_formations_away = df_all_match_data['away_formation'].unique()
-    # Combine unique formations from both columns
-    all_formations = list(set(unique_formations_home).union(unique_formations_away))
+    # Extract unique formations and count occurrences from home_formation and away_formation columns
+    formation_counts_home = df_all_match_data['home_formation'].value_counts()
+    formation_counts_away = df_all_match_data['away_formation'].value_counts()
+
+    # Combine and sum the counts for each unique formation
+    all_formations_counts = formation_counts_home.add(formation_counts_away, fill_value=0)
+
+    # Create a list of tuples containing formation and its count
+    df_unique_formations_with_counts = pd.DataFrame(list(all_formations_counts.items()), columns=['Unique_Formation', 'Count'])
 
     # violinplot data is not implemented yet
     #first output is for heatmap, second for timeline, third for violinplot, fourth for radarplot
-    return ratio_df, wl_data_df_sorted, df_extra_shot_data, df_extra_info, all_formations
+    return ratio_df, wl_data_df_sorted, df_extra_shot_data, df_extra_info, df_unique_formations_with_counts

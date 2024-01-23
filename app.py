@@ -6,8 +6,7 @@ from jbi100_app.views.timeline import Timeline
 from jbi100_app.views.violinplot import Violinplot
 from jbi100_app.views.radarplot import Radarplot 
 
-from dash import dcc, html
-import plotly.express as px
+from dash import html
 from dash.dependencies import Input, Output
 from jbi100_app import data
 
@@ -21,7 +20,7 @@ if __name__ == '__main__':
 
     # Instantiate custom views
     heatmap1 = Heatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")
-    timeline1 = Timeline(name="Formation succes over time", df=timeline_data, possible_formations=all_formations)
+    timeline1 = Timeline(name="Formation succes over time", df=timeline_data, all_formations=all_formations)
     violinplot1 = Violinplot(name="Was een beer", formation1=formation1, formation2=formation2, df=violin_data)
     radarplot1 = Radarplot(name="Was twee beren", formation1=formation1, formation2=formation2, df=radar_data)
 
@@ -52,18 +51,33 @@ if __name__ == '__main__':
     # Define interactions
     @app.callback(
         Output(heatmap1.html_id, "figure"), [
-        Input("select-color-heatmap", "value"),
-        Input(heatmap1.html_id, 'selected_data')]
+        Input("select-color-heatmap", "value")]
     )
-    def update_heatmap1(selected_color, selected_data):
-        return heatmap1.update(selected_color, selected_data)
+    def update_heatmap1(selected_color):
+        return heatmap1.update(selected_color)
     
     @app.callback(
-        Output(timeline1.html_id, "figure"), [
-        Input("select-team-timeline", "value"),
-        Input(timeline1.html_id, 'selected_data')]
+        Output("select-team-timeline", "options"), 
+        Input("select-team-threshold", "value"),
     )
-    def update_timeline1(selected_formation, selected_data):
-        return timeline1.update(selected_formation, selected_data)
+    def update_team_options(selected_threshold):
+        possible_formations = all_formations.loc[all_formations['Count'] >= int(selected_threshold)]
+        possible_formations = possible_formations['Unique_Formation'].tolist()
+        return possible_formations
+    
+    @app.callback(
+        Output("select-team-timeline", "value"), 
+        Input("select-team-timeline", "options"), 
+    )
+    def update_team_options(available_options):
+        return available_options[0]
+
+    @app.callback(
+        Output(timeline1.html_id, "figure"), 
+        Input("select-team-timeline", "value"),
+    )
+    def update_timeline1(selected_formation):
+        return timeline1.update(selected_formation)
+    
 
     app.run_server(debug=False, dev_tools_ui=False)
