@@ -57,8 +57,6 @@ def get_data():
     # Set a threshold count for formations
     threshold_count = 100
 
-    #df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]
-
     # Count occurrences of each formation pair
     formation_counts = df_wins_losses.groupby(['winning_formation', 'losing_formation']).size()
 
@@ -79,9 +77,9 @@ def get_data():
     # Create a DataFrame to store the ratio of A wins from B to B wins from A
     ratio_df = wins_from_a_to_b / wins_from_b_to_a
 
-    # Replace inf values with 2 (should probably think about this more)
-    ratio_df.replace([np.inf, -np.inf], 2, inplace=True)
-
+    # Replace inf values with -1,this makes it clear that they are infinite
+    ratio_df.replace([np.inf, -np.inf], -1, inplace=True)
+    
     # Replace NaN values with 0s
     ratio_df = ratio_df.fillna(0)
 
