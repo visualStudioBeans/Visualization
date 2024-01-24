@@ -1,6 +1,7 @@
 from dash import dcc, html
 import plotly.express as px
 colorscales = px.colors.named_colorscales()
+thresholds = [1, 10, 25, 50, 100, 250, 500, 1000]
 
 def generate_description_card():
     """
@@ -32,6 +33,12 @@ def generate_control_card():
                 id="select-color-heatmap",
                 options=colorscales,
                 value='viridis',
+            ),
+            html.Label("Select match threshold:"),
+            dcc.Dropdown(
+                id="select-general-threshold",
+                options=[{'label': str(threshold), 'value': threshold} for threshold in thresholds],
+                value=thresholds[0],
             ),
         ], style={"textAlign": "float-left"}
     )

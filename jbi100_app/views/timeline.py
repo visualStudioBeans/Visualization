@@ -5,11 +5,7 @@ class Timeline(html.Div):
     def __init__(self, name, df, all_formations):
         self.html_id = name.lower().replace(" ", "-")
         self.df = df
-        self.all_formations = all_formations
-        thresholds = [1, 10, 25, 50, 100, 250, 500, 1000]
-        # Filter rows based on the count threshold
-        possible_formations = all_formations.loc[all_formations['Count'] >= thresholds[0]]
-        possible_formations = possible_formations['Unique_Formation'].tolist()
+        self.all_formations = all_formations['Unique_Formation'].tolist()
       
         # Equivalent to `html.Div([...])`
         super().__init__(
@@ -17,19 +13,13 @@ class Timeline(html.Div):
             children=[
                 html.H6(name),
                 html.Div(
-                style={'display': 'grid', 'grid-template-columns': '50% 50%', 'padding': '10px'},
+                style={'display': 'grid', 'padding': '10px'},
                 children=[
-                    html.Label("Select match threshold:"),
                     html.Label("Select team:"),
                     dcc.Dropdown(
-                        id="select-team-threshold",
-                        options=[{'label': str(threshold), 'value': threshold} for threshold in thresholds],
-                        value=thresholds[0],
-                    ),
-                    dcc.Dropdown(
                         id="select-team-timeline",
-                        options=[{'label': formation, 'value': formation} for formation in possible_formations],
-                        value=possible_formations[0],
+                        options=[{'label': formation, 'value': formation} for formation in self.all_formations],
+                        value=self.all_formations[0],
                     ),
                     ]
                 ),
