@@ -32,7 +32,7 @@ class Radarplot(html.Div):
         clean_df1 = self._create_clean_df(filter_df1, self.formation1)
         clean_df2 = self._create_clean_df(filter_df2, self.formation2)
 
-        combined_df = pd.concat([clean_df1, clean_df2], keys=['DF1', 'DF2'])
+        combined_df = pd.concat([clean_df1, clean_df2], keys=[self.formation1, self.formation2])
 
         fig = px.line_polar(combined_df,
                             r=['goal', 'corner', 'cross', 'possession'],

@@ -37,7 +37,7 @@ class Violinplot(html.Div):
         clean_df2 = self._create_clean_df(filter_df2, self.formation2)
 
         combined_df = pd.concat([clean_df1, clean_df2], keys=['DF1', 'DF2'])
-
+        print(combined_df)
         fig = make_subplots(rows=1, cols=4, subplot_titles=['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against'])
 
         for i, attribute in enumerate(['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against']):
