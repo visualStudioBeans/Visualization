@@ -54,31 +54,7 @@ def get_data():
     # Drop rows with NaN values (None in the formations)
     df_wins_losses = df_wins_losses.dropna()
 
-    # Set a threshold count for formations
-    threshold_count = 500
-
     df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]
-    
-    sizeswin = df_wins_losses.groupby(['winning_formation']).count()
-    sizeslose = df_wins_losses.groupby(['losing_formation']).count()
-    sizes = pd.merge(sizeswin, sizeslose,  how="outer", left_index=True, right_index=True)
-    sizes['total']  = sizes['losing_formation']+sizes['winning_formation']
-    sizes = sizes[sizes['total']>=threshold_count].sort_values(by='total', ascending=False)
-
-    # Filter formation pairs by the threshold count
-    filtered_data = df_wins_losses[
-        df_wins_losses['winning_formation'].isin(sizes.index) &
-        df_wins_losses['losing_formation'].isin(sizes.index)
-    ]
-
-    # Create a DataFrame to store the ratio of A wins from B to B wins from A
-    filtered_counts = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
-    flipped_counts = np.transpose(filtered_counts)
-    total_counts = filtered_counts+flipped_counts
-    ratio_df = filtered_counts/total_counts
-    np.fill_diagonal(ratio_df.values, 0.5)
-    ratio_df = ratio_df.fillna(0.5)
-
 
     # create list of dates to use for timeline graph
     date = []
@@ -114,4 +90,4 @@ def get_data():
 
     # violinplot data is not implemented yet
     #first output is for heatmap, second for timeline, third for violinplot, fourth for radarplot
-    return ratio_df, wl_data_df_sorted, df_extra_shot_data, df_extra_info, df_unique_formations_with_counts
+    return df_wins_losses, wl_data_df_sorted, df_extra_shot_data, df_extra_info, df_unique_formations_with_counts

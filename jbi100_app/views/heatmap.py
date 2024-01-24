@@ -17,14 +17,13 @@ class Heatmap(html.Div):
             ],
         )
 
-    def update(self, selected_color):
+    def update(self, df, selected_color):
         # Create a density heatmap using Plotly Express
-        fig = px.imshow(self.df,
+        fig = px.imshow(df,
                         labels=dict(y="Winning formation", x="Losing formation", color= "Ratio"),
-                        x=self.df.columns,
-                        y=self.df.index,
-                        color_continuous_scale=selected_color,
-                        aspect= 'equal')
+                        x=df.columns,
+                        y=df.index,
+                        color_continuous_scale=selected_color)
         
         fig.update_layout(
             xaxis_title=self.feature_x,
