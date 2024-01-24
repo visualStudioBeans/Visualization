@@ -5,24 +5,12 @@ class Timeline(html.Div):
     def __init__(self, name, df, all_formations):
         self.html_id = name.lower().replace(" ", "-")
         self.df = df
-        self.all_formations = all_formations['Unique_Formation'].tolist()
       
         # Equivalent to `html.Div([...])`
         super().__init__(
             className="graph_card",
             children=[
                 html.H6(name),
-                html.Div(
-                style={'display': 'grid', 'padding': '10px'},
-                children=[
-                    html.Label("Select team:"),
-                    dcc.Dropdown(
-                        id="select-team-timeline",
-                        options=[{'label': formation, 'value': formation} for formation in self.all_formations],
-                        value=self.all_formations[0],
-                    ),
-                    ]
-                ),
                 dcc.Graph(id=self.html_id)
             ]
         )

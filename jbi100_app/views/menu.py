@@ -20,7 +20,7 @@ def generate_description_card():
     )
 
 
-def generate_control_card():
+def generate_control_card(all_formations):
     """
 
     :return: A Div containing controls for graphs.
@@ -28,21 +28,27 @@ def generate_control_card():
     return html.Div(
         id="control-card",
         children=[
-            html.Label("Color heatmap"),
+            html.Label("Select formation:"),
+            dcc.Dropdown(
+                id="select-team-formation",
+                options=[{'label': formation, 'value': formation} for formation in all_formations],
+                value=all_formations['Unique_Formation'].tolist()[0],
+                ),
+            html.Label("Select minimum matches played:", style={'margin-top': '15px'}),
+            dcc.Dropdown(
+                id="select-minimum-matches-played",
+                options=[{'label': str(threshold), 'value': threshold} for threshold in thresholds],
+                value=thresholds[0],
+            ),
+            html.Label("Color heatmap", style={'margin-top': '15px'}),
             dcc.Dropdown(
                 id="select-color-heatmap",
                 options=colorscales,
                 value='viridis',
             ),
-            html.Label("Select match threshold:"),
-            dcc.Dropdown(
-                id="select-general-threshold",
-                options=[{'label': str(threshold), 'value': threshold} for threshold in thresholds],
-                value=thresholds[0],
-            ),
         ], style={"textAlign": "float-left"}
     )
 
 
-def make_menu_layout():
-    return [generate_description_card(), generate_control_card()]
+def make_menu_layout(all_formations):
+    return [generate_description_card(), generate_control_card(all_formations)]

@@ -31,7 +31,7 @@ if __name__ == '__main__':
             html.Div(
                 id="left-column",
                 className="three columns",
-                children=make_menu_layout()
+                children=make_menu_layout(all_formations)
             ),
 
             # Right column
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         ],
     )
 
-    # Define interactions
+    # updates heatmap color
     @app.callback(
         Output(heatmap1.html_id, "figure"), [
         Input("select-color-heatmap", "value")]
@@ -56,25 +56,28 @@ if __name__ == '__main__':
     def update_heatmap1(selected_color):
         return heatmap1.update(selected_color)
     
+    #filters matches played for timeline
     @app.callback(
-        Output("select-team-timeline", "options"), 
-        Input("select-general-threshold", "value"),
+        Output("select-team-formation", "options"), 
+        Input("select-minimum-matches-played", "value"),
     )
     def update_team_options(selected_threshold):
         possible_formations = all_formations.loc[all_formations['Count'] >= int(selected_threshold)]
         possible_formations = possible_formations['Unique_Formation'].tolist()
         return possible_formations
     
+    # sets first formation as default or timeline
     @app.callback(
-        Output("select-team-timeline", "value"), 
-        Input("select-team-timeline", "options"), 
+        Output("select-team-formation", "value"), 
+        Input("select-team-formation", "options"), 
     )
-    def update_team_options(available_options):
-        return available_options[0]
+    def update_team_options(available_formations):
+        return available_formations[0]
 
+    # updates selected formation
     @app.callback(
         Output(timeline1.html_id, "figure"), 
-        Input("select-team-timeline", "value"),
+        Input("select-team-formation", "value"),
     )
     def update_timeline1(selected_formation):
         return timeline1.update(selected_formation)
