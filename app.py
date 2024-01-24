@@ -15,8 +15,8 @@ if __name__ == '__main__':
     formation_ratios, timeline_data, violin_data, radar_data, all_formations = data.get_data()
 
     # temp formation for timeline and violinplot
-    formation1 = '3-3-4'
-    formation2 = '2-4-4'
+    formation1 = '4-3-3'
+    formation2 = '4-4-2'
 
     # Instantiate custom views
     heatmap1 = Heatmap(name='Formation Ratios Heatmap',df=formation_ratios,feature_y="Winning formation",feature_x= "Losing formation")

@@ -55,33 +55,29 @@ def get_data():
     df_wins_losses = df_wins_losses.dropna()
 
     # Set a threshold count for formations
-    threshold_count = 100
+    threshold_count = 500
 
-    # Count occurrences of each formation pair
-    formation_counts = df_wins_losses.groupby(['winning_formation', 'losing_formation']).size()
+    df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]
+    
+    sizeswin = df_wins_losses.groupby(['winning_formation']).count()
+    sizeslose = df_wins_losses.groupby(['losing_formation']).count()
+    sizes = pd.merge(sizeswin, sizeslose,  how="outer", left_index=True, right_index=True)
+    sizes['total']  = sizes['losing_formation']+sizes['winning_formation']
+    sizes = sizes[sizes['total']>=threshold_count].sort_values(by='total', ascending=False)
 
     # Filter formation pairs by the threshold count
-    valid_formations = formation_counts[formation_counts >= threshold_count]
-
-    # Get only rows with valid formations
     filtered_data = df_wins_losses[
-        df_wins_losses.apply(lambda row: (row['winning_formation'], row['losing_formation']) in valid_formations.index, axis=1)
+        df_wins_losses['winning_formation'].isin(sizes.index) &
+        df_wins_losses['losing_formation'].isin(sizes.index)
     ]
 
-    # Count occurrences of how many times A wins from B
-    wins_from_a_to_b = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
-
-    # Count occurrences of how many times B wins from A
-    wins_from_b_to_a = filtered_data.groupby(['losing_formation', 'winning_formation']).size().unstack(fill_value=0)
-
     # Create a DataFrame to store the ratio of A wins from B to B wins from A
-    ratio_df = wins_from_a_to_b / wins_from_b_to_a
-
-    # Replace inf values with -1,this makes it clear that they are infinite
-    ratio_df.replace([np.inf, -np.inf], -1, inplace=True)
-    
-    # Replace NaN values with 0s
-    ratio_df = ratio_df.fillna(0)
+    filtered_counts = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
+    flipped_counts = np.transpose(filtered_counts)
+    total_counts = filtered_counts+flipped_counts
+    ratio_df = filtered_counts/total_counts
+    np.fill_diagonal(ratio_df.values, 0.5)
+    ratio_df = ratio_df.fillna(0.5)
 
 
     # create list of dates to use for timeline graph
