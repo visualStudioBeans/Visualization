@@ -58,7 +58,7 @@ if __name__ == '__main__':
     
     @app.callback(
         Output("select-team-timeline", "options"), 
-        Input("select-team-threshold", "value"),
+        Input("select-general-threshold", "value"),
     )
     def update_team_options(selected_threshold):
         possible_formations = all_formations.loc[all_formations['Count'] >= int(selected_threshold)]
