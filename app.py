@@ -52,11 +52,12 @@ if __name__ == '__main__':
     # updates heatmap color + input
     @app.callback(
         Output(heatmap1.html_id, "figure"), [
-        Input("select-color-heatmap", "value"),
+        Input("select-color", "value"),
         Input("select-minimum-matches-played", "value")
         ]
     )
     def update_heatmap1(selected_color, selected_threshold):
+        selected_threshold = int(selected_threshold)
         sizeswin = df_wins_losses.groupby(['winning_formation']).count()
         sizeslose = df_wins_losses.groupby(['losing_formation']).count()
         sizes = pd.merge(sizeswin, sizeslose,  how="outer", left_index=True, right_index=True)
@@ -74,7 +75,7 @@ if __name__ == '__main__':
         filtered_counts = filtered_data.groupby(['winning_formation', 'losing_formation']).size().unstack(fill_value=0)
         flipped_counts = np.transpose(filtered_counts)
         total_counts = filtered_counts+flipped_counts
-        ratio_df = filtered_counts/total_counts
+        ratio_df = round(filtered_counts/total_counts,2)
         np.fill_diagonal(ratio_df.values, 0.5)
         ratio_df = ratio_df.fillna(0.5)
         return heatmap1.update(ratio_df, selected_color)
@@ -101,9 +102,10 @@ if __name__ == '__main__':
     @app.callback(
         Output(timeline1.html_id, "figure"), 
         Input("select-team-formation", "value"),
+        Input("select-color", "value")
     )
-    def update_timeline1(selected_formation):
-        return timeline1.update(selected_formation)
+    def update_timeline1(selected_formation, selected_color):
+        return timeline1.update(selected_formation, selected_color)
     
 
     app.run_server(debug=False, dev_tools_ui=False)
