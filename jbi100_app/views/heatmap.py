@@ -18,7 +18,7 @@ class Heatmap(html.Div):
         )
 
     def update(self, df, selected_color):
-        # Create a density heatmap using Plotly Express
+        # Create a heatmap using Plotly Express
         fig = px.imshow(df,
                         labels=dict(y="Winning formation", x="Losing formation", color= "Ratio"),
                         color_continuous_scale=selected_color)
@@ -27,12 +27,13 @@ class Heatmap(html.Div):
             xaxis_title=self.feature_x,
             yaxis_title=self.feature_y,
             coloraxis_colorbar=dict(title="Ratio"),
+            width=900,
+            height=600,
         )
 
         # Update x-axis and y-axis to show all labels
         fig.update_xaxes(tickangle=45, tickmode='array', tickvals=list(range(len(df.columns))), ticktext=df.columns)
         fig.update_yaxes(tickmode='array', tickvals=list(range(len(df.index))), ticktext=df.index)
-
 
         return fig
 
