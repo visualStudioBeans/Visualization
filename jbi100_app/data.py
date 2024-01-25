@@ -53,7 +53,6 @@ def get_data():
 
     # Drop rows with NaN values (None in the formations)
     df_wins_losses = df_wins_losses.dropna()
-
     df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]
 
     # create list of dates to use for timeline graph

@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # Instantiate custom views
     heatmap1 = Heatmap(name='Formation ratios heatmap',df=df_wins_losses,feature_y="Winning formation",feature_x= "Losing formation")
     timeline1 = Timeline(name="Formation succes over time", df=timeline_data, all_formations=all_formations)
-    violinplot1 = Violinplot(name="Was een beer", formation1=formation1, formation2=formation2, df=violin_data)
+    violinplot1 = Violinplot(name="Violen", formation1=formation1, formation2=formation2, df=violin_data)
     radarplot1 = Radarplot(name="Was twee beren", formation1=formation1, formation2=formation2, df=radar_data)
 
     app.layout = html.Div(
