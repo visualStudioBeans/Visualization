@@ -1,7 +1,7 @@
 from dash import dcc, html
 import plotly.express as px
-colorscales = ['ice', 'gray']
-thresholds = [1, 10, 25, 50, 100, 250, 500, 1000]
+colorscales = ['Blue', 'Gray']
+thresholds = [10, 50, 100, 500, 750, 1000, 1500]
 
 def generate_description_card():
     """
@@ -28,21 +28,29 @@ def generate_control_card(all_formations):
     return html.Div(
         id="control-card",
         children=[
-            html.Label("Select formation:"),
+            html.Label("Select formation:", style={'margin-bottom': '10px'}),
             dcc.Dropdown(
                 id="select-team-formation",
                 options=[{'label': formation, 'value': formation} for formation in all_formations],
                 value=all_formations['Unique_Formation'].tolist()[0],
                 ),
-            html.Label("Select minimum matches played by formation:", style={'margin-top': '15px'}),
-            dcc.Dropdown(
+            html.Label("Select minimum matches played by formation:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
+            dcc.Slider(0, 2000, 50,
                 id="select-minimum-matches-played",
-                options=[{'label': str(threshold), 'value': threshold} for threshold in thresholds],
-                value=thresholds[4],
+                marks={
+                    0: {'label': '0'},
+                    100: {'label': '100'},
+                    500: {'label': '500'},
+                    1000: {'label': '1000'},
+                    2000: {'label': '2000'},
+                },
+                value=100,
+                updatemode='mouseup',
+                tooltip={"placement": "bottom", "always_visible": True}
             ),
-            html.Label("Color heatmap", style={'margin-top': '15px'}),
+            html.Label("Select color:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
             dcc.Dropdown(
-                id="select-color-heatmap",
+                id="select-color",
                 options=colorscales,
                 value=colorscales[0],
             ),
