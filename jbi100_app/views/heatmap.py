@@ -18,10 +18,10 @@ class Heatmap(html.Div):
         )
 
     def update(self, df, selected_color):
-        if (selected_color == 'Gray'):
+        if (selected_color == 'Grayscale'):
             selected_color = 'gray'
         else:
-            selected_color = 'ice'
+            selected_color = 'viridis'
 
         # Create a heatmap using Plotly Express
         fig = px.imshow(df,

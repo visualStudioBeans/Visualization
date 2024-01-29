@@ -1,6 +1,6 @@
 from dash import dcc, html
 import plotly.express as px
-colorscales = ['Blue', 'Gray']
+colorscales = ['Color', 'Grayscale']
 thresholds = [10, 50, 100, 500, 750, 1000, 1500]
 
 def generate_description_card():
