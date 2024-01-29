@@ -53,10 +53,12 @@ if __name__ == '__main__':
     @app.callback(
         Output(heatmap1.html_id, "figure"), [
         Input("select-color", "value"),
-        Input("select-minimum-matches-played", "value")
+        Input("select-minimum-matches-played", "value"),
+        Input("select-team-formation", "value"),
+        Input("select-opponent-team-formation", "value")
         ]
     )
-    def update_heatmap1(selected_color, selected_threshold):
+    def update_heatmap1(selected_color, selected_threshold, selected_formation, selected_opponent_formation):
         selected_threshold = int(selected_threshold)
         sizeswin = df_wins_losses.groupby(['winning_formation']).count()
         sizeslose = df_wins_losses.groupby(['losing_formation']).count()
@@ -78,13 +80,13 @@ if __name__ == '__main__':
         ratio_df = round(filtered_counts/total_counts,2)
         np.fill_diagonal(ratio_df.values, 0.5)
         ratio_df = ratio_df.fillna(0.5)
-        return heatmap1.update(ratio_df, selected_color)
+        return heatmap1.update(ratio_df, selected_color, selected_formation, selected_opponent_formation)
         
     # filters matches played for timeline
     @app.callback(
         Output("select-team-formation", "options"), 
         Output("select-opponent-team-formation", "options"),
-        Input("select-minimum-matches-played", "value"),
+        Input("select-minimum-matches-played", "value")
     )
     def update_team_options(selected_threshold):
         possible_formations = all_formations.loc[all_formations['Count'] >= int(selected_threshold)]
@@ -95,12 +97,11 @@ if __name__ == '__main__':
     @app.callback(
         Output("select-team-formation", "value"), 
         Output("select-opponent-team-formation", "value"), 
-        Input("select-team-formation", "options"), 
+        Input("select-team-formation", "options")
     )
     def update_team_options(available_formations):
         return available_formations[0], available_formations[1]
     
-
     # updates selected formation
     @app.callback(
         Output(timeline1.html_id, "figure"), 
