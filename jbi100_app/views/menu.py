@@ -34,7 +34,13 @@ def generate_control_card(all_formations):
                 options=[{'label': formation, 'value': formation} for formation in all_formations],
                 value=all_formations['Unique_Formation'].tolist()[0],
                 ),
-            html.Label("Select minimum matches played by formation:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
+            html.Label("Select opponent formation:", style={'margin-top': '15px','margin-bottom': '10px'}),
+            dcc.Dropdown(
+                id="select-opponent-team-formation",
+                options=[{'label': formation, 'value': formation} for formation in all_formations],
+                value=all_formations['Unique_Formation'].tolist()[0],
+                ),
+            html.Label("Select minimum matches played by formations:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
             dcc.Slider(0, 2000, 50,
                 id="select-minimum-matches-played",
                 marks={

@@ -83,20 +83,23 @@ if __name__ == '__main__':
     # filters matches played for timeline
     @app.callback(
         Output("select-team-formation", "options"), 
+        Output("select-opponent-team-formation", "options"),
         Input("select-minimum-matches-played", "value"),
     )
     def update_team_options(selected_threshold):
         possible_formations = all_formations.loc[all_formations['Count'] >= int(selected_threshold)]
         possible_formations = possible_formations['Unique_Formation'].tolist()
-        return possible_formations
+        return possible_formations, possible_formations
     
     # sets first formation as default for timeline
     @app.callback(
         Output("select-team-formation", "value"), 
+        Output("select-opponent-team-formation", "value"), 
         Input("select-team-formation", "options"), 
     )
     def update_team_options(available_formations):
-        return available_formations[0]
+        return available_formations[0], available_formations[1]
+    
 
     # updates selected formation
     @app.callback(
