@@ -82,18 +82,23 @@ if __name__ == '__main__':
         ratio_df = ratio_df.fillna(0.5)
         return heatmap1.update(ratio_df, selected_color, selected_formation, selected_opponent_formation)
         
-    # filters matches played for timeline
+    # filters matches played
     @app.callback(
         Output("select-team-formation", "options"), 
         Output("select-opponent-team-formation", "options"),
         Input("select-minimum-matches-played", "value")
     )
     def update_team_options(selected_threshold):
-        possible_formations = all_formations.loc[all_formations['Count'] >= int(selected_threshold)]
-        possible_formations = possible_formations['Unique_Formation'].tolist()
+        sizeswin = df_wins_losses.groupby(['winning_formation']).count()
+        sizeslose = df_wins_losses.groupby(['losing_formation']).count()
+        sizes = pd.merge(sizeswin, sizeslose,  how="outer", left_index=True, right_index=True)
+        sizes['total']  = sizes['losing_formation']+sizes['winning_formation']
+        sizes = sizes.sort_values(by='total', ascending=False)
+        possible_formations = sizes[sizes['total']>=int(selected_threshold)]
+        possible_formations = sorted(possible_formations.index.values.tolist())
         return possible_formations, possible_formations
     
-    # sets first formation as default for timeline
+    # sets first formation as default 
     @app.callback(
         Output("select-team-formation", "value"), 
         Output("select-opponent-team-formation", "value"), 
@@ -102,7 +107,7 @@ if __name__ == '__main__':
     def update_team_options(available_formations):
         return available_formations[0], available_formations[0]
     
-    # updates selected formation
+    # updates selected formation for timeline
     @app.callback(
         Output(timeline1.html_id, "figure"), 
         Input("select-team-formation", "value"),
