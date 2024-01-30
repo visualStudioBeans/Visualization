@@ -7,7 +7,8 @@ def get_data():
     df_match_data = pd.read_csv('jbi100_app/Data/FIFA World Cup 2022 Match Data/data.csv', delimiter=',')
     df_extra_match_data = pd.read_csv('jbi100_app/Data/Match formations.csv')
     df_extra_shot_data = pd.read_csv('jbi100_app/Data/Match Shots.csv')
-    df_extra_info = pd.read_csv('jbi100_app/Data/Match formation.csv')
+    df_extra_info = pd.read_csv('jbi100_app/Data/MatchExtraInfo.csv')
+    df_possession = pd.read_csv('jbi100_app/Data/Match possession.csv')
 
     # Split the score into home and away scores
     df_match_data[['score_home', 'score_away']] = df_match_data['score'].str.split("–", expand=True)
@@ -89,4 +90,4 @@ def get_data():
 
     # violinplot data is not implemented yet
     #first output is for heatmap, second for timeline, third for violinplot, fourth for radarplot
-    return df_wins_losses, wl_data_df_sorted, df_extra_shot_data, df_extra_info, df_unique_formations_with_counts
+    return df_wins_losses, wl_data_df_sorted, df_extra_shot_data, df_possession, df_unique_formations_with_counts
