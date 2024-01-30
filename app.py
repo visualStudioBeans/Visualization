@@ -23,7 +23,7 @@ if __name__ == '__main__':
     heatmap1 = Heatmap(name='Formation ratios heatmap',df=df_wins_losses,feature_y="Winning formation",feature_x= "Losing formation")
     timeline1 = Timeline(name="Formation succes over time", df=timeline_data, all_formations=all_formations)
     violinplot1 = Violinplot(name="Violen", formation1=formation1, formation2=formation2, df=violin_data)
-    radarplot1 = Radarplot(name="Was twee beren", formation1=formation1, formation2=formation2, df=radar_data)
+    radarplot1 = Radarplot(name="Was twee beren", df=radar_data)
 
     app.layout = html.Div(
         id="app-container",
@@ -110,6 +110,13 @@ if __name__ == '__main__':
     )
     def update_timeline1(selected_formation, selected_color):
         return timeline1.update(selected_formation, selected_color)
-    
+
+    @app.callback(
+        Output(radarplot1.html_id, "figure"), 
+        Input("select-team-formation", "value"),
+        Input("select-opponent-team-formation", "value")
+    )    
+    def update_radarplot(selected_formation, selected_opponent_formation):
+        return radarplot1.update(selected_formation, selected_opponent_formation)
 
     app.run_server(debug=False, dev_tools_ui=False)
