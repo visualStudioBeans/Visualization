@@ -17,13 +17,16 @@ class Heatmap(html.Div):
             ],
         )
 
-    def update(self, df, selected_color, selected_formation, selected_opponent_formation):
-        color_scale = 'gray' if selected_color == 'Grayscale' else 'viridis'
+    def update(self, df, selected_color):
+        if (selected_color == 'Gray'):
+            selected_color = 'gray'
+        else:
+            selected_color = 'ice'
 
         # Create a heatmap using Plotly Express
         fig = px.imshow(df,
                         labels=dict(y="Winning formation", x="Losing formation", color= "Ratio"),
-                        color_continuous_scale=color_scale,
+                        color_continuous_scale=selected_color,
                         text_auto=True)
         
         fig.update_layout(
@@ -38,31 +41,5 @@ class Heatmap(html.Div):
         fig.update_xaxes(tickangle=45, tickmode='array', tickvals=list(range(len(df.columns))), ticktext=df.columns)
         fig.update_yaxes(tickmode='array', tickvals=list(range(len(df.index))), ticktext=df.index)
 
-        # Highlight the selected team formation
-        if selected_formation is not None:
-            x_highlight, y_highlight = self.get_highlight_coordinates(df, selected_formation, selected_opponent_formation)
-            fig.add_shape(
-                type='rect',
-                x0=x_highlight - 0.5,
-                x1=x_highlight + 0.5,
-                y0=y_highlight - 0.5,
-                y1=y_highlight + 0.5,
-                line=dict(color='red', width=2),
-                fillcolor='rgba(255, 0, 0, 0.3)',
-            )
-
         return fig
 
-    def get_highlight_coordinates(self, df, selected_formation, selected_opponent_formation):
-        x_highlight = 1
-        y_highlight = 1
-        print(df.columns.get_loc(selected_formation), selected_formation)
-        
-        try:
-            x_highlight = df.columns.get_loc(selected_opponent_formation)
-            y_highlight = df.index.get_loc(selected_formation)
-        except KeyError:
-            # Handle the case when the selected formation is not found in the DataFrame
-            pass
-
-        return x_highlight, y_highlight
