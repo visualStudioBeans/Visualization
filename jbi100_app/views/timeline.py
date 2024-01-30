@@ -44,8 +44,8 @@ class Timeline(html.Div):
         merged_df_opponent = pd.merge(opponent_wins_per_year, opponent_losses_per_year, on='year', how='outer').fillna(0)
 
         # Calculate win probability
-        merged_df[selected_formation] = merged_df['wins'] / (merged_df['wins'] + merged_df['losses'])
-        merged_df_opponent[selected_opponent_formation] = merged_df_opponent['opponent_wins'] / (merged_df_opponent['opponent_wins'] + merged_df_opponent['opponent_losses'])
+        merged_df[selected_formation] = round(merged_df['wins'] / (merged_df['wins'] + merged_df['losses']), 2)
+        merged_df_opponent[selected_opponent_formation] = round(merged_df_opponent['opponent_wins'] / (merged_df_opponent['opponent_wins'] + merged_df_opponent['opponent_losses']), 2)
         
         if (selected_formation == selected_opponent_formation):
             fig = px.line(merged_df, x='year', y=[selected_formation], 

@@ -1,7 +1,7 @@
 from dash import dcc, html
 import plotly.express as px
 import numpy as np
-from matplotlib import colors
+
 
 class Heatmap(html.Div):
     def __init__(self, name, df, feature_x, feature_y):
