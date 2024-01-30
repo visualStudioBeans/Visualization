@@ -11,11 +11,7 @@ def generate_description_card():
     return html.Div(
         id="description-card",
         children=[
-            html.H5("Football manager 2024"),
-            html.Div(
-                id="intro",
-                children="Use these visualizations so your team wins!",
-            ),
+            html.H5("FIFA formation optimizer"),
         ],
     )
 
@@ -28,7 +24,7 @@ def generate_control_card(all_formations):
     return html.Div(
         id="control-card",
         children=[
-            html.Label("Select formation:", style={'margin-bottom': '10px'}),
+            html.Label("Select formation:", style={'margin-bottom': '10px', 'margin-top' : '15px'}),
             dcc.Dropdown(
                 id="select-team-formation",
                 options=[{'label': formation, 'value': formation} for formation in all_formations],
