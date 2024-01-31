@@ -39,11 +39,12 @@ if __name__ == '__main__':
             html.Div(
                 id="right-column",
                 className="nine columns",
+                style={'overflow-y': 'auto', 'height': '100vh'},
                 children=[
                     heatmap1,
                     timeline1,
                     violinplot1,
-                    #radarplot1
+                    radarplot1
                 ],
             ),
         ],
