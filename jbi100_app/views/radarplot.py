@@ -11,10 +11,10 @@ class Radarplot(html.Div):
 
         # Equivalent to `html.Div([...])`
         super().__init__(
-            className="graph_card_top", style={'max-width' : '40%'},
+            className="graph_card_top",
             children=[
                 html.H6(name),
-                dcc.Graph(id=self.html_id)
+                dcc.Graph(id=self.html_id, style={'margin-top' : '30px'})
             ],
         )
 
@@ -50,10 +50,14 @@ class Radarplot(html.Div):
                 radialaxis=dict(
                 visible=True,
                 range=[0, 100]
-                )),
+            )),
+            margin=dict(l=30, r=30, t=50, b=10),  # Adjust margins
             showlegend=True,
+            legend=dict(
+                orientation="h",  # Set legend orientation to horizontal
+                yanchor="top",    # Anchor legend to the top
+            ),
             title=f'Formation Comparison: {formation1}',
-            margin={"t": 10, "b": 10, "r": 0, "l": 0, "pad": 0},
             )
         else:
             fig.update_layout(
@@ -61,10 +65,14 @@ class Radarplot(html.Div):
                 radialaxis=dict(
                 visible=True,
                 range=[0, 100]
-                )),
+            )),
+            margin=dict(l=30, r=30, t=50, b=10),  # Adjust margins
             showlegend=True,
+            legend=dict(
+                orientation="h",  # Set legend orientation to horizontal
+                yanchor="top",    # Anchor legend to the top
+            ),
             title=f'Formation Comparison: {formation1} vs {formation2}',
-            margin={"t": 10, "b": 10, "r": 0, "l": 0, "pad": 0},
             )
 
         return fig
