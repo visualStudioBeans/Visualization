@@ -7,7 +7,7 @@ body {
 }
 
 #left-column {
-    padding: 10px 1rem;
+    padding: 5px .5rem;
     margin-top: 10px;
     margin-right: 0px;
     display: flex;
@@ -44,6 +44,12 @@ h5 {
 
 #control-card label {
     font-weight: bold;
+}
+
+#slider{
+    margin: 0px 0px 0px 0px;
+    border: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 .graph_card_bottom {
