@@ -11,7 +11,7 @@ class Radarplot(html.Div):
 
         # Equivalent to `html.Div([...])`
         super().__init__(
-            className="graph_card",
+            className="graph_card_top",
             children=[
                 html.H6(name),
                 dcc.Graph(id=self.html_id)
@@ -48,7 +48,8 @@ class Radarplot(html.Div):
             visible=True,
             range=[0, 100]
             )),
-        showlegend=True
+        showlegend=True,
+        margin={"t": 10, "b": 10, "r": 0, "l": 0, "pad": 0},
         )
 
         return fig

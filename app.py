@@ -23,7 +23,7 @@ if __name__ == '__main__':
     heatmap1 = Heatmap(name='Formation ratios heatmap',df=df_wins_losses,feature_y="Winning formation",feature_x= "Losing formation")
     timeline1 = Timeline(name="Formation succes over time", df=timeline_data, all_formations=all_formations)
     violinplot1 = Violinplot(name="Violen", formation1=formation1, formation2=formation2, df=violin_data)
-    radarplot1 = Radarplot(name="Was twee beren", df=radar_data)
+    radarplot1 = Radarplot(name="Radar plot of different features", df=radar_data)
 
     app.layout = html.Div(
         id="app-container",
@@ -37,13 +37,19 @@ if __name__ == '__main__':
 
             # Right column
             html.Div(
-                id="right-column",
+                id="right-column-top",
                 className="nine columns",
                 children=[
-                    heatmap1,
+                    heatmap1, 
+                    radarplot1
+                    ],
+            ),
+            html.Div(
+                id="right-column-bottom",
+                className="columns",
+                children=[
                     timeline1,
                     violinplot1,
-                    #radarplot1
                 ],
             ),
         ],

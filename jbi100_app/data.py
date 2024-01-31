@@ -86,6 +86,7 @@ def get_data():
 
     # Create a list of tuples containing formation and its count
     df_unique_formations_with_counts = pd.DataFrame(list(all_formations_counts.items()), columns=['Unique_Formation', 'Count'])
+    
 
     # violinplot data is not implemented yet
     #first output is for heatmap, second for timeline, third for violinplot, fourth for radarplot

@@ -7,16 +7,29 @@ body {
 }
 
 #left-column {
-    padding: 20px 2rem;
+    padding: 10px 1rem;
+    margin-top: 10px;
+    margin-right: 0px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    max-width: 15%;
 }
 
-#right-column {
+#right-column-bottom {
     background-color: #f4f4f4;
-    padding: 0rem 2rem;
-    min-height: 100vh;
+    padding: 0rem 1rem;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+}
+
+#right-column-top {
+    background-color: #f4f4f4;
+    padding: 0rem 1rem;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
 }
 
 h5 {
@@ -33,12 +46,21 @@ h5 {
     font-weight: bold;
 }
 
-.graph_card {
+.graph_card_bottom {
+    background-color: white;
+    border-radius: 0.675rem;
+    margin-top: 10px;
+    margin-left: 0px;
+    min-width: 50%;
+    margin-inline-start: 5px;
+}
+
+.graph_card_top {
     background-color: white;
     border-radius: 0.675rem;
     padding: 1rem;
-    margin: auto;
-    margin-top: 20px;
+    min-width: 50%;
+    margin-inline-start: 5px;
 }
 
 .graph_card h6 {

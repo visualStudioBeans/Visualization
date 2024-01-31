@@ -16,9 +16,9 @@ class Violinplot(html.Div):
 
         # Equivalent to `html.Div([...])`
         super().__init__(
-            className="graph_card",
+            className="graph_card_bottom",
             children=[
-                html.H6(name),
+                html.H6(name, style={'padding-left' : '.5rem'}),
                 dcc.Graph(id=self.html_id)
             ],
         )

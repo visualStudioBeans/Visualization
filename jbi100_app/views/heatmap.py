@@ -12,11 +12,9 @@ class Heatmap(html.Div):
 
         # Equivalent to `html.Div([...])`
         super().__init__(
-            className="graph_card",
+            className="graph_card_top", style={'min-width' : '60%'}, 
             children=[
                 html.H6(name),
-                html.Label("The selected formation agianst the opponent formation is highlighted.", style={'margin':  '0 7px'}),
-                html.Label("If applicable, the best formation against the chosen opponent formation is also highlighted.", style={'margin':  '0 7px'}),
                 dcc.Graph(id=self.html_id)
             ],
         )
@@ -24,7 +22,7 @@ class Heatmap(html.Div):
     def update(self, df, selected_color, selected_formation, selected_opponent_formation):
         color_scale_heatmap = 'gray' if selected_color == 'Grayscale' else 'viridis'
         color_scale_highlight1 = 'black' if selected_color == 'Grayscale' else 'red'
-        color_scale_highlight2 = 'white' if selected_color == 'Grayscale' else 'magenta'
+        color_scale_highlight2 = 'white'
 
         # Create a heatmap using Plotly Express
         fig = px.imshow(df,
@@ -36,8 +34,8 @@ class Heatmap(html.Div):
             xaxis_title=self.feature_x,
             yaxis_title=self.feature_y,
             coloraxis_colorbar=dict(title="Ratio"),
-            width=900,
-            height=600,
+            margin={"t": 10, "b": 10, "r": 0, "l": 0, "pad": 0},
+            height=550,
         )
 
         # Update x-axis and y-axis to show all labels
@@ -48,25 +46,29 @@ class Heatmap(html.Div):
         x_highlight, y_highlight = self.get_highlight_coordinates(df, selected_formation, selected_opponent_formation)
 
         fig.add_shape(
-            type='rect',
+            type='circle',
+            xref="x",
+            yref="y",
             x0=x_highlight - 0.5,
             x1=x_highlight + 0.5,
             y0=y_highlight - 0.5,
             y1=y_highlight + 0.5,
             line=dict(color=color_scale_highlight1, width=2),
-            fillcolor='rgba(0, 0, 0, 0.3)',
+            fillcolor='rgba(255, 255, 255, 0.3)',
         )
 
         if y_highlight != np.argmin(df.iloc[x_highlight]):
             y_highlight = np.argmin(df.iloc[x_highlight])
             fig.add_shape(
-                type='rect',
+                type='circle',
+                xref="x",
+                yref="y",
                 x0=x_highlight - 0.5,
                 x1=x_highlight + 0.5,
                 y0=y_highlight - 0.5,
                 y1=y_highlight + 0.5,
                 line=dict(color=color_scale_highlight2, width=2),
-                fillcolor='rgba(255, 255, 255, 0.3)',
+                fillcolor='rgba(0, 0, 0, 0.3)',
             )
 
         return fig
