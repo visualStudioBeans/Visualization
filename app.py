@@ -39,7 +39,6 @@ if __name__ == '__main__':
             html.Div(
                 id="right-column-top",
                 className="nine columns",
-                style={'overflow-y': 'auto', 'height': '100vh'},
                 children=[
                     heatmap1, 
                     radarplot1
