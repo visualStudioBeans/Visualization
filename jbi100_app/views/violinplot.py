@@ -21,7 +21,8 @@ class Violinplot(html.Div):
             ],
         )
 
-    def update(self, formation1, formation2):
+    def update(self, formation1, formation2, selected_color):
+        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'gold']
 
         filter_df1 = self.df[self.df['home_formation'].apply(lambda x: formation1 in x) | 
                             self.df['away_formation'].apply(lambda x: formation1 in x)]
@@ -34,7 +35,6 @@ class Violinplot(html.Div):
 
         combined_df = pd.concat([clean_df1, clean_df2], keys=['DF1', 'DF2'])
         fig = make_subplots(rows=1, cols=4, subplot_titles=['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against'])
-        colors = ['blue', 'orange']
 
         for i, attribute in enumerate(['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against']):
             for j, data in enumerate(['DF1', 'DF2']):
@@ -43,7 +43,7 @@ class Violinplot(html.Div):
                     y=combined_df.loc[data][attribute],
                     name=attribute,
                     box_visible=True,
-                    line_color=colors[j]
+                    line_color=color[j]
                 )
                 fig.add_trace(trace, row=1, col=i+1)
 

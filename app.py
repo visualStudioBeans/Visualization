@@ -123,20 +123,24 @@ if __name__ == '__main__':
     def update_timeline1(selected_formation, selected_opponent_formation, selected_color):
         return timeline1.update(selected_formation,selected_opponent_formation, selected_color)
 
+    # updates radarplot
     @app.callback(
         Output(radarplot1.html_id, "figure"), 
         Input("select-team-formation", "value"),
-        Input("select-opponent-team-formation", "value")
+        Input("select-opponent-team-formation", "value"),
+        Input("select-color", "value")
     )    
-    def update_radarplot(selected_formation, selected_opponent_formation):
-        return radarplot1.update(selected_formation, selected_opponent_formation)
+    def update_radarplot(selected_formation, selected_opponent_formation, selected_color):
+        return radarplot1.update(selected_formation, selected_opponent_formation, selected_color)
     
+    # updates violinplot
     @app.callback(
         Output(violinplot1.html_id, "figure"), 
         Input("select-team-formation", "value"),
-        Input("select-opponent-team-formation", "value")
+        Input("select-opponent-team-formation", "value"),
+        Input("select-color", "value")
     )    
-    def update_violinplot(selected_formation, selected_opponent_formation):
-        return violinplot1.update(selected_formation, selected_opponent_formation)
+    def update_violinplot(selected_formation, selected_opponent_formation, selected_color):
+        return violinplot1.update(selected_formation, selected_opponent_formation, selected_color)
 
     app.run_server(debug=False, dev_tools_ui=False)

@@ -19,7 +19,8 @@ class Radarplot(html.Div):
         )
 
 
-    def update(self, formation1, formation2):
+    def update(self, formation1, formation2, selected_color):
+        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'gold']
         
         fig = go.Figure()
 
@@ -33,14 +34,14 @@ class Radarplot(html.Div):
             r=values1,
             theta=categories + [categories[0]],
             fill='none',
-            line=dict(color='blue')
+            line=dict(color=color[0])
         ))
 
         fig.add_trace(go.Scatterpolar(
             r=values2,
             theta=categories + [categories[0]],
             fill='none',
-            line=dict(color='orange')
+            line=dict(color=color[1])
         ))
 
         # Update layout

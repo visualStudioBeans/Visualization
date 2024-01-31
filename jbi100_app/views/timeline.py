@@ -17,7 +17,7 @@ class Timeline(html.Div):
         )
 
     def update(self, selected_formation, selected_opponent_formation, selected_color):
-        color_scale = ['gray', 'black'] if selected_color == 'Grayscale' else ['green', 'darkblue']
+        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['gold', 'darkblue']
         # Filter DataFrame for the selected user formation
         # only counts winning matches right now
         filtered_df_win = self.df[self.df['winning_formation'].apply(lambda x: selected_formation in x)]
@@ -49,14 +49,14 @@ class Timeline(html.Div):
         
         if (selected_formation == selected_opponent_formation):
             fig = px.line(merged_df, x='year', y=[selected_formation], 
-                    color_discrete_sequence=color_scale, markers=True,
+                    color_discrete_sequence=color, markers=True,
                     labels={'year': 'Year', 'value': 'Win Probability', 'variable': 'Formation'},
                     title=f'Formation Comparison: {selected_formation}')
         else:
             # Merge both win probability DataFrames
             merged_df = pd.merge(merged_df, merged_df_opponent, on='year', how='outer').fillna(0)
             fig = px.line(merged_df, x='year', y=[selected_formation, selected_opponent_formation], 
-                    color_discrete_sequence=color_scale, markers=True,
+                    color_discrete_sequence=color, markers=True,
                     labels={'year': 'Year', 'value': 'Win Probability', 'variable': 'Formation'},
                     title=f'Formation Comparison: {selected_formation} vs {selected_opponent_formation}')
 
