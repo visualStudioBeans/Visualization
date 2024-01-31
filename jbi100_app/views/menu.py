@@ -11,7 +11,7 @@ def generate_description_card():
     return html.Div(
         id="description-card",
         children=[
-            html.H5("FIFA formation optimizer"),
+            html.H5("Soccer formation manager"),
         ],
     )
 
