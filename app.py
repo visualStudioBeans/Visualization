@@ -22,8 +22,8 @@ if __name__ == '__main__':
     # Instantiate custom views
     heatmap1 = Heatmap(name='Formation ratios heatmap',df=df_wins_losses,feature_y="Winning formation",feature_x= "Losing formation")
     timeline1 = Timeline(name="Formation succes over time", df=timeline_data, all_formations=all_formations)
-    violinplot1 = Violinplot(name="Violen", formation1=formation1, formation2=formation2, df=violin_data)
-    radarplot1 = Radarplot(name="Radar plot of different features", df=radar_data)
+    violinplot1 = Violinplot(name="Violen", df=violin_data)
+    radarplot1 = Radarplot(name="Was twee beren", df=radar_data)
 
     app.layout = html.Div(
         id="app-container",
@@ -39,6 +39,7 @@ if __name__ == '__main__':
             html.Div(
                 id="right-column-top",
                 className="nine columns",
+                style={'overflow-y': 'auto', 'height': '100vh'},
                 children=[
                     heatmap1, 
                     radarplot1
@@ -130,5 +131,13 @@ if __name__ == '__main__':
     )    
     def update_radarplot(selected_formation, selected_opponent_formation):
         return radarplot1.update(selected_formation, selected_opponent_formation)
+    
+    @app.callback(
+        Output(violinplot1.html_id, "figure"), 
+        Input("select-team-formation", "value"),
+        Input("select-opponent-team-formation", "value")
+    )    
+    def update_violinplot(selected_formation, selected_opponent_formation):
+        return violinplot1.update(selected_formation, selected_opponent_formation)
 
     app.run_server(debug=False, dev_tools_ui=False)

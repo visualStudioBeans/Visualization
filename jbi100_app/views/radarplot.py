@@ -32,25 +32,39 @@ class Radarplot(html.Div):
         fig.add_trace(go.Scatterpolar(
             r=values1,
             theta=categories + [categories[0]],
-            fill='toself'
+            fill='none',
+            line=dict(color='blue')
         ))
 
         fig.add_trace(go.Scatterpolar(
             r=values2,
             theta=categories + [categories[0]],
-            fill='toself'
+            fill='none',
+            line=dict(color='orange')
         ))
 
         # Update layout
-        fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-            visible=True,
-            range=[0, 100]
-            )),
-        showlegend=True,
+        if formation1 == formation2:
+            fig.update_layout(
+            polar=dict(
+                radialaxis=dict(
+                visible=True,
+                range=[0, 100]
+                )),
+            showlegend=True,
+            title=f'Formation Comparison: {formation1}'
+            )
+        else:
+            fig.update_layout(
+            polar=dict(
+                radialaxis=dict(
+                visible=True,
+                range=[0, 100]
+                )),
+            showlegend=True,
+            title=f'Formation Comparison: {formation1} vs {formation2}',
         margin={"t": 10, "b": 10, "r": 0, "l": 0, "pad": 0},
-        )
+            )
 
         return fig
 
