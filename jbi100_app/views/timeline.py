@@ -17,7 +17,7 @@ class Timeline(html.Div):
         )
 
     def update(self, selected_formation, selected_opponent_formation, selected_color):
-        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['gold', 'darkblue']
+        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'mediumseagreen']
         # Filter DataFrame for the selected user formation
         # only counts winning matches right now
         filtered_df_win = self.df[self.df['winning_formation'].apply(lambda x: selected_formation in x)]

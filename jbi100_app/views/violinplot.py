@@ -31,7 +31,7 @@ class Violinplot(html.Div):
 
     def update(self, formation1, formation2, selected_color):
         # Determine colors based on selected color mode
-        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'gold']
+        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'mediumseagreen']
 
         # Filter the dataframe based on selected formations
         filter_df1 = self.df[self.df['home_formation'].apply(lambda x: formation1 in x) | 

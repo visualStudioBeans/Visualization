@@ -20,7 +20,7 @@ class Radarplot(html.Div):
 
 
     def update(self, formation1, formation2, selected_color):
-        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'gold']
+        color = ['darkgray', 'black'] if selected_color == 'Grayscale' else ['darkblue', 'mediumseagreen']
         
         fig = go.Figure()
 
