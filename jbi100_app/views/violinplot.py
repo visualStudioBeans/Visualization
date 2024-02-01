@@ -12,11 +12,16 @@ class Violinplot(html.Div):
         self.html_id = name.lower().replace(" ", "-")
         self.df = df
 
+        info_text = "These violin plots show the distributions of shots on and off target on both sides for both formations.\nYou can hover over the violin to get extra information about the distribution."
+
+
         # Equivalent to `html.Div([...])`
         super().__init__(
             className="graph_card_bottom",
             children=[
-                html.H6(name, style={'padding-left' : '.5rem'}),
+                html.H6([name, 
+                        html.P(info_text, style={'font-size': '12px', 'color': 'black'})],
+                        style={'padding-left' : '.5rem'}),
                 dcc.Graph(id=self.html_id)
             ],
         )
@@ -34,11 +39,11 @@ class Violinplot(html.Div):
         clean_df2 = self._create_clean_df(filter_df2, formation2)
 
         combined_df = pd.concat([clean_df1, clean_df2], keys=['DF1', 'DF2'])
-        fig = make_subplots(rows=1, cols=4, subplot_titles=['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against'])
+        fig = make_subplots(rows=1, cols=4, subplot_titles=['shot on target', 'shot off target', 'shot on against', 'shot off against'])
 
         fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=1)
         fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=2)
-        fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=3)
+        fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=3) 
         fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=4)
 
         custom_legend = []
