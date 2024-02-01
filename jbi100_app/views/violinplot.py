@@ -79,9 +79,9 @@ class Violinplot(html.Div):
         for legend_item in custom_legend:
             fig.add_trace(legend_item)
 
-        offensive_title_x = (fig['layout']['xaxis1']['domain'][0] + fig['layout']['xaxis2']['domain'][1]) / 2
-        defensive_title_x = (fig['layout']['xaxis3']['domain'][0] + fig['layout']['xaxis4']['domain'][1]) / 2
-        title_y = 1.08  # Adjust the height of the titles as needed
+        offensive_title_x = ((fig['layout']['xaxis2']['domain'][0]+fig['layout']['xaxis1']['domain'][1]) / 2)
+        defensive_title_x = ((fig['layout']['xaxis3']['domain'][1] + fig['layout']['xaxis4']['domain'][0]) / 2)
+        title_y = 1.2  # Adjust the height of the titles as needed
 
         fig.add_annotation(
             go.layout.Annotation(
@@ -91,7 +91,8 @@ class Violinplot(html.Div):
                 xref="paper",
                 yref="paper",
                 showarrow=False,
-                font=dict(size=14, color='black')
+                font=dict(size=14, color='black'),
+                xanchor="center"
             )
         )
 
@@ -103,10 +104,10 @@ class Violinplot(html.Div):
                 xref="paper",
                 yref="paper",
                 showarrow=False,
-                font=dict(size=14, color='black')
+                font=dict(size=14, color='black'),
+                xanchor="center"
             )
         )
-
 
         return fig
 
