@@ -6,12 +6,14 @@ class Timeline(html.Div):
     def __init__(self, name, df, all_formations):
         self.html_id = name.lower().replace(" ", "-")
         self.df = df
+
+        info_text = 'These lines show the win ratio of a formation against all other formations over time.'
       
         # Equivalent to `html.Div([...])`
         super().__init__(
             className="graph_card_bottom",
             children=[
-                html.H6(name, style={'padding-left' : '.5rem'}),
+                html.H6([name, html.P(info_text, style={'font-size': '12px', 'color': 'black'})], style={'padding-left' : '.5rem'}),
                 dcc.Graph(id=self.html_id)
             ]
         )

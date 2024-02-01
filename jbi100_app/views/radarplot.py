@@ -9,11 +9,13 @@ class Radarplot(html.Div):
         self.html_id = name.lower().replace(" ", "-")
         self.df = df
 
+        info_text = 'This plot shows general statistics for both formation. They are normalized values.'
+
         # Equivalent to `html.Div([...])`
         super().__init__(
             className="graph_card_top",
             children=[
-                html.H6(name),
+                html.H6([name, html.P(info_text, style={'font-size': '12px', 'color': 'black'})], style={'padding-left' : '.5rem'}),
                 dcc.Graph(id=self.html_id, style={'margin-top' : '30px'})
             ],
         )

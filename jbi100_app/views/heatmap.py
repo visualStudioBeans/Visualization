@@ -10,11 +10,15 @@ class Heatmap(html.Div):
         self.feature_x = feature_x
         self.feature_y = feature_y
 
+        info_text = """This heat map shows the win ratios of formations against each other. 
+        The red (or black) circle shows the location of the formations you picked. If there is a white circle, this means there is a formation 
+        that has a higher win ratio agianst the formation your opponent is playing."""
+
         # Equivalent to `html.Div([...])`
         super().__init__(
             className="graph_card_top", style={'min-width' : '60%'}, 
             children=[
-                html.H6(name),
+                html.H6([name, html.P(info_text, style={'font-size': '12px', 'color': 'black'})], style={'padding-left' : '.5rem'}),
                 dcc.Graph(id=self.html_id)
             ],
         )
