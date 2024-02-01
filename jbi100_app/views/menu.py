@@ -24,6 +24,13 @@ def generate_control_card(all_formations):
     return html.Div(
         id="control-card",
         children=[
+            html.Label("Tool Explanation:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
+            dcc.Markdown(
+            """
+            This is the Soccer formation manager. Here you can find information about how well a formation performs. In this menu you can select 
+            your formation, the opponents formation, the minimum number of matches a formation has to have to be shown in the graphs, and the color scheme of the tool.
+            """
+            ),
             html.Label("Select formation:", style={'margin-bottom': '10px', 'margin-top' : '15px'}),
             dcc.Dropdown(
                 id="select-team-formation",
