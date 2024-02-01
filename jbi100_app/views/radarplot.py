@@ -34,14 +34,16 @@ class Radarplot(html.Div):
             r=values1,
             theta=categories + [categories[0]],
             fill='none',
-            line=dict(color=color[0])
+            line=dict(color=color[0]),
+            name=formation1
         ))
 
         fig.add_trace(go.Scatterpolar(
             r=values2,
             theta=categories + [categories[0]],
             fill='none',
-            line=dict(color=color[1])
+            line=dict(color=color[1]),
+            name=formation2
         ))
 
         # Update layout
@@ -58,7 +60,7 @@ class Radarplot(html.Div):
                 orientation="h",  # Set legend orientation to horizontal
                 yanchor="top",    # Anchor legend to the top
             ),
-            title=f'Formation Comparison: {formation1}',
+            title=f'Compare seperate statistics for {formation1} & {formation2}',
             )
         else:
             fig.update_layout(
