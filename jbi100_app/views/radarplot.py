@@ -71,7 +71,7 @@ class Radarplot(html.Div):
                     orientation="h",  # Set legend orientation to horizontal
                     yanchor="top",    # Anchor legend to the top
                 ),
-                title=f'Compare separate statistics for {formation1} & {formation2}',
+                #title=f'Compare separate statistics for {formation1} & {formation2}',
             )
         else:
             # Adjust layout for two formations comparison

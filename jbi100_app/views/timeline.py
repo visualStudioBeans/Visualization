@@ -67,8 +67,7 @@ class Timeline(html.Div):
             # Create a line chart for two formations comparison
             fig = px.line(merged_df, x='year', y=[selected_formation, selected_opponent_formation], 
                     color_discrete_sequence=color, markers=True,
-                    labels={'year': 'Year', 'value': 'Win Probability', 'variable': 'Formation'},
-                    title=f'Formation Comparison: {selected_formation} vs {selected_opponent_formation}')
+                    labels={'year': 'Year', 'value': 'Win Probability', 'variable': 'Formation'})
 
         # Update layout
         fig.update_layout(
