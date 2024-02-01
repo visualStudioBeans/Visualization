@@ -45,14 +45,14 @@ class Violinplot(html.Div):
 
         for i, attribute in enumerate(['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against']):
             for j, data in enumerate(['DF1', 'DF2']):
+                category_data = combined_df.loc[data][attribute]
                 trace = go.Violin(
-                    x=[data] * len(combined_df.loc[data]),
-                    y=combined_df.loc[data][attribute],
+                    x=[data] * len(category_data),
+                    y=category_data,
                     box_visible=True,
                     line_color=color[j],
                     showlegend=False,
                     hoveron='violins',
-
                 )
                 fig.add_trace(trace, row=1, col=i+1)
 
@@ -79,7 +79,34 @@ class Violinplot(html.Div):
         for legend_item in custom_legend:
             fig.add_trace(legend_item)
 
-        fig.update_layout(title_text="          Offensive skill                 Defensive skill")
+        offensive_title_x = (fig['layout']['xaxis1']['domain'][0] + fig['layout']['xaxis2']['domain'][1]) / 2
+        defensive_title_x = (fig['layout']['xaxis3']['domain'][0] + fig['layout']['xaxis4']['domain'][1]) / 2
+        title_y = 1.08  # Adjust the height of the titles as needed
+
+        fig.add_annotation(
+            go.layout.Annotation(
+                text="Offensive Skill",
+                x=offensive_title_x,
+                y=title_y,
+                xref="paper",
+                yref="paper",
+                showarrow=False,
+                font=dict(size=14, color='black')
+            )
+        )
+
+        fig.add_annotation(
+            go.layout.Annotation(
+                text="Defensive Skill",
+                x=defensive_title_x,
+                y=title_y,
+                xref="paper",
+                yref="paper",
+                showarrow=False,
+                font=dict(size=14, color='black')
+            )
+        )
+
 
         return fig
 
