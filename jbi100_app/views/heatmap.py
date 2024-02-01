@@ -1,6 +1,7 @@
 from dash import dcc, html
 import plotly.express as px
 import numpy as np
+import pandas as pd
 
 
 class Heatmap(html.Div):
@@ -23,17 +24,21 @@ class Heatmap(html.Div):
             ],
         )
 
-    def update(self, df, selected_color, selected_formation, selected_opponent_formation):
+    def update(self, df, selected_color, selected_formation, selected_opponent_formation, df_count):
         color_scale_heatmap = 'gray' if selected_color == 'Grayscale' else 'viridis'
         color_scale_highlight1 = 'black' if selected_color == 'Grayscale' else 'red'
         color_scale_highlight2 = 'white'
-
+        
         # Create a heatmap using Plotly Express
         fig = px.imshow(df,
                         labels=dict(y="Winning formation", x="Losing formation", color= "Ratio"),
                         color_continuous_scale=color_scale_heatmap,
                         text_auto=True)
         
+        fig.update(data=[{'customdata': df_count,
+            'hovertemplate': 'Winning formation: %{y}<br>Losing formation: %{x}<br>Win ratio: %{z}<extra></extra><br>Matches: %{customdata}'}])
+        
+    
         fig.update_layout(
             xaxis_title=self.feature_x,
             yaxis_title=self.feature_y,

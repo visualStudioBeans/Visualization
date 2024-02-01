@@ -14,7 +14,8 @@ class Violinplot(html.Div):
         self.df = df
 
         # Informational text to be displayed below the title
-        info_text = "These violin plots show the distributions of shots on and off target on both sides for both formations.\nYou can hover over the violin to get extra information about the distribution."
+        info_text = """These violin plots show the distributions of shots on and off target on both sides for both formations.
+        You can hover over the violin to get extra information about the distribution."""
 
         # Equivalent to `html.Div([...])`
         super().__init__(

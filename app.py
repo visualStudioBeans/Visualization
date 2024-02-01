@@ -15,10 +15,6 @@ if __name__ == '__main__':
     # Create data
     df_wins_losses, timeline_data, violin_data, radar_data, all_formations = data.get_data()
 
-    # temp formation for timeline and violinplot
-    formation1 = '4-3-3'
-    formation2 = '4-4-2'
-
     # Instantiate custom views
     heatmap1 = Heatmap(name='Win ratios heatmap',df=df_wins_losses,feature_y="Winning formation",feature_x= "Losing formation")
     timeline1 = Timeline(name="Success over time", df=timeline_data, all_formations=all_formations)
@@ -86,7 +82,7 @@ if __name__ == '__main__':
         ratio_df = round(filtered_counts/total_counts,2)
         np.fill_diagonal(ratio_df.values, 0.5)
         ratio_df = ratio_df.fillna(0.5)
-        return heatmap1.update(ratio_df, selected_color, selected_formation, selected_opponent_formation)
+        return heatmap1.update(ratio_df, selected_color, selected_formation, selected_opponent_formation, total_counts)
         
     # filters matches played
     @app.callback(
