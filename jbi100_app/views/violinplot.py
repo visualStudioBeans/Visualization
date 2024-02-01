@@ -36,19 +36,50 @@ class Violinplot(html.Div):
         combined_df = pd.concat([clean_df1, clean_df2], keys=['DF1', 'DF2'])
         fig = make_subplots(rows=1, cols=4, subplot_titles=['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against'])
 
+        fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=1)
+        fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=2)
+        fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=3)
+        fig.update_xaxes(tickvals=[], ticktext=[], row=1, col=4)
+
+        custom_legend = []
+
         for i, attribute in enumerate(['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against']):
             for j, data in enumerate(['DF1', 'DF2']):
                 trace = go.Violin(
-                    x=[data] * len(combined_df.loc[data]),  # Create a list of 'data' repeated for each data point
+                    x=[data] * len(combined_df.loc[data]),
                     y=combined_df.loc[data][attribute],
-                    name=attribute,
                     box_visible=True,
-                    line_color=color[j]
+                    line_color=color[j],
+                    showlegend=False,
+                    hoveron='violins',
+
                 )
                 fig.add_trace(trace, row=1, col=i+1)
 
+        # Add custom legend items to the figure
+        custom_legend.append(go.Scatter(
+            x=[None],
+            y=[None],
+            mode='markers',
+            marker=dict(size=10, symbol='square'),
+            showlegend=True,
+            name= formation1,
+            line=dict(color=color[0])
+        ))
+        custom_legend.append(go.Scatter(
+            x=[None],
+            y=[None],
+            mode='markers',
+            marker=dict(size=10, symbol='square'),
+            showlegend=True,
+            name=formation2,
+            line=dict(color=color[1])
+        ))
 
-                fig.update_layout(title_text="Comparison of Formations")
+        for legend_item in custom_legend:
+            fig.add_trace(legend_item)
+
+        fig.update_layout(title_text="          Offensive skill                 Defensive skill")
 
         return fig
 
