@@ -1,8 +1,8 @@
-# JBI100-example-app
-
+# JBI100 visualization
 ## About this app
 
-You can use this as a basic template for your JBI100 visualization project.
+This visualization is adapted from the provided template, this readme is also largly the same as the template.
+Libraries used and sources of adapted code are included within the final report.
 
 ## Requirements
 
