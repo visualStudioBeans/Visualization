@@ -8,7 +8,6 @@ def get_data():
     df_extra_match_data = pd.read_csv('jbi100_app/Data/Match formations.csv')
     df_extra_shot_data = pd.read_csv('jbi100_app/Data/Match Shots.csv')
     df_radar_data = pd.read_csv('jbi100_app/Data/Radar Plot Data.csv')
-    df_radar_dataz = pd.read_csv('jbi100_app/Data/RadarPlotZ.csv')
 
     # Split the score into home and away scores
     df_match_data[['score_home', 'score_away']] = df_match_data['score'].str.split("–", expand=True)
