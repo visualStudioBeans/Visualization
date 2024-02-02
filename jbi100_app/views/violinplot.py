@@ -46,10 +46,10 @@ class Violinplot(html.Div):
         clean_df2 = self._create_clean_df(filter_df2, formation2)
 
         # Combine the two dataframes
-        combined_df = pd.concat([clean_df1, clean_df2], keys=['DF1', 'DF2'])
+        combined_df = pd.concat([clean_df1, clean_df2], keys=[formation1, formation2])
 
         # Create subplots for each shot category
-        fig = make_subplots(rows=1, cols=4, subplot_titles=['shot on target', 'shot off target', 'shot on against', 'shot off against'])
+        fig = make_subplots(rows=1, cols=4, subplot_titles=['shot on target', 'shot off target', 'shot on against', 'shot off against'], shared_yaxes=True)
 
         # Update x-axis ticks for all subplots
         for i in range(1, 5):
@@ -60,7 +60,7 @@ class Violinplot(html.Div):
 
         # Iterate over shot categories and formations to add Violin plots
         for i, attribute in enumerate(['shot_on', 'shot_off', 'shot_on_against', 'shot_off_against']):
-            for j, data in enumerate(['DF1', 'DF2']):
+            for j, data in enumerate([formation1, formation2]):
                 category_data = combined_df.loc[data][attribute]
                 trace = go.Violin(
                     x=[data] * len(category_data),
@@ -126,6 +126,22 @@ class Violinplot(html.Div):
                 showarrow=False,
                 font=dict(size=14, color='black'),
                 xanchor="center"
+            )
+        )
+        fig.add_shape(
+            # Line Vertical
+            dict(
+                type="line",
+                x0=0.5,  # Adjust this value to position the line between your specific subplots
+                y0=0.05,  # Adjust y0 and y1 according to the extent you want the line to cover
+                x1=0.5,  # Same as x0 to make it vertical
+                y1=1.2,
+                line=dict(
+                    color="black",  # Choose a color for the line
+                    width=0.2,  # Adjust the width of the line
+                ),
+                xref='paper',  # Use 'paper' to refer to the entire width of the figure
+                yref='paper'   # Use 'paper' to refer to the entire height of the figure
             )
         )
 

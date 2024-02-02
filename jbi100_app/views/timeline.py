@@ -76,7 +76,7 @@ class Timeline(html.Div):
             yaxis_title='Win Probability'
         )
 
-        fig.update_xaxes(fixedrange=True)
-        fig.update_yaxes(fixedrange=True)
+        fig.update_xaxes(fixedrange=True, nticks=8)
+        fig.update_yaxes(fixedrange=True, tickvals=[0, 0.25, 0.5, 0.75, 1])
 
         return fig
