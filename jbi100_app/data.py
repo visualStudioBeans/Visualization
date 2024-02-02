@@ -8,6 +8,7 @@ def get_data():
     df_extra_match_data = pd.read_csv('jbi100_app/Data/Match formations.csv')
     df_extra_shot_data = pd.read_csv('jbi100_app/Data/Match Shots.csv')
     df_radar_data = pd.read_csv('jbi100_app/Data/Radar Plot Data.csv')
+    df_radar_dataz = pd.read_csv('jbi100_app/Data/RadarPlotZ.csv')
 
     # Split the score into home and away scores
     df_match_data[['score_home', 'score_away']] = df_match_data['score'].str.split("–", expand=True)
@@ -50,6 +51,8 @@ def get_data():
     'winning_formation': winning_formation,
     'losing_formation': losing_formation
     })
+
+    df_radar_data[df_radar_data.columns[1:]] = df_radar_data[df_radar_data.columns[1:]].div(100)
 
     # Drop rows with NaN values (None in the formations)
     df_wins_losses = df_wins_losses.dropna()

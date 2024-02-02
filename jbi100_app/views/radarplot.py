@@ -1,8 +1,8 @@
 from dash import dcc, html
 import plotly.graph_objects as go
+import re
 
 class Radarplot(html.Div):
-    # df should have columns {date, home_formation, away_formation, home_goal, home_corner, home_cross, home_possession, away_goal, away_corner, away_cross, away_possession}
     def __init__(self, name, df):
         # Generate a unique HTML ID based on the name
         self.html_id = name.lower().replace(" ", "-")
@@ -30,6 +30,7 @@ class Radarplot(html.Div):
         fig = go.Figure()
 
         # Extract values for the radar chart for each formation
+        # Extract values for the radar chart for each formation
         values1 = self.df[self.df['Formation'] == formation1].values.tolist()[0][1:]
         values1.append(values1[0])
         values2 = self.df[self.df['Formation'] == formation2].values.tolist()[0][1:]
@@ -41,7 +42,7 @@ class Radarplot(html.Div):
         # Add traces for each formation
         fig.add_trace(go.Scatterpolar(
             r=values1,
-            theta=categories + [categories[0]],
+            theta=categories  + [categories[0]],
             fill='none',
             line=dict(color=color[0]),
             name=formation1
@@ -62,7 +63,7 @@ class Radarplot(html.Div):
                 polar=dict(
                     radialaxis=dict(
                         visible=True,
-                        range=[0, 100]
+                        range=[0, 1]
                     )
                 ),
                 margin=dict(l=30, r=30, t=50, b=10),  # Adjust margins
@@ -79,7 +80,7 @@ class Radarplot(html.Div):
                 polar=dict(
                     radialaxis=dict(
                         visible=True,
-                        range=[0, 100]
+                        range=[0, 1]
                     )
                 ),
                 margin=dict(l=30, r=30, t=50, b=10),  # Adjust margins
@@ -88,7 +89,6 @@ class Radarplot(html.Div):
                     orientation="h",  # Set legend orientation to horizontal
                     yanchor="top",    # Anchor legend to the top
                 ),
-                title=f'Formation Comparison: {formation1} vs {formation2}',
             )
 
         return fig

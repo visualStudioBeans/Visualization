@@ -59,8 +59,7 @@ class Timeline(html.Div):
             # Create a line chart for a single formation
             fig = px.line(merged_df, x='year', y=[selected_formation], 
                     color_discrete_sequence=color, markers=True,
-                    labels={'year': 'Year', 'value': 'Win Probability', 'variable': 'Formation'},
-                    title=f'Formation Comparison: {selected_formation}')
+                    labels={'year': 'Year', 'value': 'Win Probability', 'variable': 'Formation'})
         else:
             # Merge both win probability DataFrames for a comparison
             merged_df = pd.merge(merged_df, merged_df_opponent, on='year', how='outer').fillna(0)

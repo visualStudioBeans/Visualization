@@ -96,6 +96,7 @@ class Violinplot(html.Div):
         for legend_item in custom_legend:
             fig.add_trace(legend_item)
 
+        
         # Calculate title positions
         offensive_title_x = ((fig['layout']['xaxis2']['domain'][0]+fig['layout']['xaxis1']['domain'][1]) / 2)
         defensive_title_x = ((fig['layout']['xaxis3']['domain'][1] + fig['layout']['xaxis4']['domain'][0]) / 2)
