@@ -2,4 +2,4 @@ from dash import Dash
 
 
 app = Dash(__name__)
-app.title = "FIFA formation optimizer"
+app.title = "Soccer formation optimizer"
