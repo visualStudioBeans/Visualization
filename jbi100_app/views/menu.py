@@ -53,12 +53,11 @@ def generate_control_card(all_formations):
                     id="select-minimum-matches-played",
                     marks={
                         0: {'label': '0'},
-                        200: {'label': '200'},
                         500: {'label': '500'},
                         1000: {'label': '1000'},
                         2000: {'label': '2000'},
                     },
-                    value=200,
+                    value=500,
                     updatemode='mouseup',
                     persistence=True, 
                     tooltip={"placement": "bottom", "always_visible": True},

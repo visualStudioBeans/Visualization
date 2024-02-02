@@ -9,7 +9,7 @@ class Radarplot(html.Div):
         self.df = df
 
         # Informational text to be displayed below the title
-        info_text = 'This plot shows general statistics for both formations. They are normalized values.'
+        info_text = 'This plot shows various normalized statistics for both formations.'
 
         # Equivalent to `html.Div([...])`
         super().__init__(
@@ -30,11 +30,14 @@ class Radarplot(html.Div):
         fig = go.Figure()
 
         # Extract values for the radar chart for each formation
-        # Extract values for the radar chart for each formation
         values1 = self.df[self.df['Formation'] == formation1].values.tolist()[0][1:]
         values1.append(values1[0])
         values2 = self.df[self.df['Formation'] == formation2].values.tolist()[0][1:]
         values2.append(values2[0])
+
+        # Round values
+        values1 = [ round(elem, 2) for elem in values1 ]
+        values2 = [ round(elem, 2) for elem in values2 ]
 
         # Get categories (column names) from the dataframe
         categories = self.df.columns.tolist()[1:]
@@ -72,7 +75,6 @@ class Radarplot(html.Div):
                     orientation="h",  # Set legend orientation to horizontal
                     yanchor="top",    # Anchor legend to the top
                 ),
-                #title=f'Compare separate statistics for {formation1} & {formation2}',
             )
         else:
             # Adjust layout for two formations comparison
