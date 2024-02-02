@@ -52,8 +52,6 @@ def get_data():
     'losing_formation': losing_formation
     })
 
-    df_radar_data[df_radar_data.columns[1:]] = df_radar_data[df_radar_data.columns[1:]].div(100)
-
     # Drop rows with NaN values (None in the formations)
     df_wins_losses = df_wins_losses.dropna()
     df_wins_losses = df_wins_losses[df_wins_losses['winning_formation'] != df_wins_losses['losing_formation']]

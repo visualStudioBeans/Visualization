@@ -12,10 +12,10 @@ class Heatmap(html.Div):
         self.feature_y = feature_y
 
         # Informational text to be displayed below the title
-        info_text = """This heat map shows the win ratios of formations against each other. 
-        The red (or black) circle shows the location of the formations you picked. The white circle indicates a formation 
-        that has a higher win ratio agianst the formation your opponent is playing, if applicable. When hovering over the heatmap, 
-        it shows how many matches two formations have played against each other."""
+        info_text = """This heat map shows the win ratios of all formation matchups. The red (or black) circle shows the location of 
+        the formations you picked. The white circle indicates a formation that has a higher win ratio against the formation your 
+        opponent is playing, if applicable. When hovering over the heatmap, it shows how many matches two formations have played 
+        against each other."""
 
         # Equivalent to `html.Div([...])`
         super().__init__(
