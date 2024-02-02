@@ -16,7 +16,7 @@ class Timeline(html.Div):
             className="graph_card_bottom",
             children=[
                 # Display the title (name) and information text
-                html.H6([name, html.P(info_text, style={'font-size': '12px', 'color': 'black'})], style={'padding-left' : '.5rem'}),
+                html.H6([name, html.P(info_text, style={'font-size': '12px', 'color': 'black', 'padding-left' : '.5rem'})]),
                 # Create a Dash Graph component with a unique ID
                 dcc.Graph(id=self.html_id)
             ]

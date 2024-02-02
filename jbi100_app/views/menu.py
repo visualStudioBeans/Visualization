@@ -28,7 +28,7 @@ def generate_control_card(all_formations):
             dcc.Markdown(
             """
             This is the Soccer formation manager. Here you can find information about how well a formation performs. In this menu you can select 
-            your formation, the opponents formation, the minimum number of matches a formation has to have to be shown in the graphs, and the color scheme of the tool.
+            your formation, the opponents formation, the minimum number of matches a formation has to have played to be shown in the graphs, and the color of the tool.
             """
             ),
             html.Label("Select formation:", style={'margin-bottom': '10px', 'margin-top' : '15px'}),
@@ -63,7 +63,7 @@ def generate_control_card(all_formations):
                     tooltip={"placement": "bottom", "always_visible": True},
                     ),
                 ),
-            html.Label("Select color:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
+            html.Label("Select colors:", style={'margin-top': '15px', 'margin-bottom': '10px'}),
             dcc.Dropdown(
                 id="select-color",
                 options=colorscales,

@@ -9,7 +9,7 @@ class Radarplot(html.Div):
         self.df = df
 
         # Informational text to be displayed below the title
-        info_text = 'This plot shows various normalized statistics for both formations.'
+        info_text = 'This plot shows various normalized statistics for both formations. Hover over the graph for exact values.'
 
         # Equivalent to `html.Div([...])`
         super().__init__(
